@@ -5,6 +5,7 @@
 	//errors will not be shown
 	//error_reporting(0);
 	include_once('../../ssi/db.php');
+	include_once('../../ssi/smtpSettings.php');
 	if(isset($_POST['submit'])){
 		if(!empty($_POST['userNIC']) && !empty($_POST['password'])){
 			//get user name and password
@@ -32,6 +33,23 @@
 										//block the user if attempts are >= 3
 										$updateLoginAttempt = "UPDATE users SET status='0' WHERE email='".$userName."'";
 										if(mysqli_query($con, $updateLoginAttempt)){
+											//send email to meet admin
+											$to = $userName;
+											//Set who the message is to be sent to
+											$mail->addAddress($to, $to);
+											//Set the subject line
+											$mail->Subject = "Account Deactivated";
+$mail->Body = "Dear User,
+
+Your account has been deactivated due to three unsuccessfull login attempts. System detects it as an unauthorized login attempt. Please contact the Striking Sports to re activate your account.
+
+Please try to minimize such errors in the future
+
+p.s. : Please do not reply to this email.
+
+Thank You!
+Striking Sports";
+											$mail->send();
 											header('Location:../login.php?error=da');
 										} else {
 											//wrong password error message

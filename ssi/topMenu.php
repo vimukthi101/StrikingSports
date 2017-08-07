@@ -27,7 +27,7 @@
 					} else {
 					?>	
                     	<li class="top-scal">
-                            <a href="">
+                            <a href="../src/register.php">
                                 <i class="fa fa-ticket" aria-hidden="true"></i> Register
                             </a>
                         </li>

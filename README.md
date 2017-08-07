@@ -4,4 +4,4 @@ sports web site
 TO DO
 #####
 
-1) add a user registration page
+1) add user re activate page 

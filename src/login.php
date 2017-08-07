@@ -23,7 +23,7 @@
                      <input type="password" class="form-control" pattern="\S+" title="Password should not be empty" id="password" name="password" placeholder="Enter Password" required="required">
                     </div>
                     <div style="padding:10px;">
-                     <a><font face="Verdana, Geneva, sans-serif" color="#FFFFFF" style="padding:10px;">Don't have an account yet? Click here to register!</font></a>
+                     <a href="register.php"><font face="Verdana, Geneva, sans-serif" color="#FFFFFF" style="padding:10px;">Don't have an account yet? Click here to register!</font></a>
                     </div>
                     <?php
 					if(isset($_GET['error'])){
