@@ -1,9 +1,13 @@
+<?php
+if(!isset($_SESSION[''])){
+	session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
 ?>
-
 <body style="overflow:visible;">
     <div id="preloader" style="display: none;">
         <div id="status" style="display: none;">&nbsp;</div>

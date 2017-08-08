@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION[''])){
+	session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -32,31 +37,31 @@ include_once('../ssi/header.php');
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="bname" name="bname" class="form-control" placeholder="Type your name" required="">
+                                    <input type="text" id="bname" name="bname" class="form-control" placeholder="Type your name" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">E-mail</label>
                                 <div class="col-sm-10">
-                                    <input type="email" id="bmail" name="bmail" class="form-control" placeholder="Type your email" required="">
+                                    <input type="email" id="bmail" name="bmail" class="form-control" placeholder="Type your email" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Number</label>
                                 <div class="col-sm-10">
-                                    <input type="number" id="bphone" name="bphone" class="form-control" placeholder="Type your phone" required="">
+                                    <input type="number" id="bphone" name="bphone" class="form-control" placeholder="Type your phone" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Date</label>
                                 <div class="col-sm-10">
-                                    <input type="date" id="bdate" name="bdate" class="form-control" required="">
+                                    <input type="date" id="bdate" name="bdate" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">City</label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="bcity" name="bcity" class="form-control" placeholder="Type your city" required="">
+                                    <input type="text" id="bcity" name="bcity" class="form-control" placeholder="Type your city" required>
                                 </div>
                             </div>
                             <div class="form-group">

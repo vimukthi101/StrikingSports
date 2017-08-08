@@ -24,7 +24,7 @@ include_once('../ssi/db.php');
     <div class="lp">
         <div class="inn-title text-center">
             <font face="Verdana, Geneva, sans-serif" size="+1">
-            	<u>My Profile</u>
+            	<u>Delete Profile</u>
             </font>
         </div>
         <div class="p-mf">
@@ -74,24 +74,24 @@ include_once('../ssi/db.php');
 				header('login.php?error=np');
 			}
 		?>
-        <div style="padding:10px;"> 
-			<form role="form" class="form-horizontal">
-            	<?php
-				if(isset($_GET['error'])){
-					if(!empty($_GET['error'])){
-						$error = $_GET['error'];
-						if($error == "su"){
-							echo '<div class="form-group text-center" style="padding-left:100px;">
-									<label class="form-control" style="height:35px;">Your Profile Updated Successfully.</label>
-								</div>';
-						}
+        <?php
+			if(isset($_GET['error'])){
+				if(!empty($_GET['error'])){
+					$error = $_GET['error'];
+					if($error == "qf"){
+						echo '<div class="form-group text-center">
+								<label class="form-control">Please Try Again Later.</label>
+							</div>';
 					}
 				}
-				?>
+			}
+		?>
+        <div style="padding:10px;"> 
+			<form role="form" class="form-horizontal" method="post" action="controller/disableUsersController.php">
                 <div class="form-group">
                     <label for="employeelNIC" class="control-label col-md-3">E-Mail</label>
                     <div class="col-md-8">
-                    	<input class="form-control" type="text" name="nic" id="nic" readonly value="<?php echo $email; ?>"/>
+                    	<input class="form-control" type="text" name="email" id="email" readonly value="<?php echo $email; ?>"/>
                 	</div>
                 </div>
                 <div class="form-group">
@@ -142,10 +142,10 @@ include_once('../ssi/db.php');
                     	<input class="form-control text-capitalize" type="text" name="regDate" id="regDate" readonly value="<?php echo $regDateTime; ?>" required/>
                 	</div>
                 </div>
-                <div class="form-group text-center">
-                    <label class="control-label col-md-3"><a href="changePassword.php">Change Password</a></label>
-                    <label class="control-label col-md-3"><a href="editProfile.php">Update Profile</a></label>
-                    <label class="control-label col-md-3"><a href="disableUsers.php">Delete Profile</a></label>
+                <div class="form-group">
+                     <div class="form-group col-md-11 text-center">
+                        <input type="submit" value="Delete Profile" id="submit" name="submit" class="btn btn-danger" onclick="return confirm('Do You Wish to De-Activate Account?');return false;"/>
+                    </div>
                 </div>
             </form>
         </div>    
@@ -199,4 +199,4 @@ include_once('../ssi/db.php');
 } else {
 	header('Location:../404.php');
 }
-?>
+?>               

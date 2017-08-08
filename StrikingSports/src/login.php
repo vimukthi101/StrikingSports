@@ -71,12 +71,15 @@ include_once('../ssi/header.php');
                     <div class="book-form">
                         <form role="form" class="form-group" action="controller/loginController.php" method="post">
                             <div style="padding:10px;">
-                             <input type="email" title="Should be a valid e-mail address" class="form-control" id="userNIC" name="userNIC" placeholder="Enter User E-mail Address" required="required">
+                             <input type="email" title="Should be a valid e-mail address" class="form-control" id="userNIC" name="userNIC" placeholder="Enter User E-mail Address" required>
                             </div>
                             <div style="padding:10px;">
-                             <input type="password" class="form-control" pattern="\S+" title="Password should not be empty" id="password" name="password" placeholder="Enter Password" required="required">
+                             <input type="password" class="form-control" pattern="\S+" title="Password should not be empty" id="password" name="password" placeholder="Enter Password" required>
                             </div>
-                            <div class="spe-title-1 spe-title-wid">
+                            <div class="spe-title-1">
+                                <a href="forgotPassword.php"><p>Forgot Password?</p></a>
+                            </div>
+                            <div class="spe-title-1">
                                 <a href="register.php"><p>Don't have an account yet? Click here to register!</p></a>
                             </div>
                             <div class="row" style="padding:10px;">
