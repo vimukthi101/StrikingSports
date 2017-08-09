@@ -26,11 +26,45 @@ CREATE TABLE `address` (
   `address_lane` varchar(40) NOT NULL,
   `address_city` varchar(30) NOT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8;
 
 /*Data for the table `address` */
 
-insert  into `address`(`address_id`,`address_no`,`address_lane`,`address_city`) values (249,'3/15A','Gangarama Road','Piliyandala');
+insert  into `address`(`address_id`,`address_no`,`address_lane`,`address_city`) values (253,'3/15A','Gangarama Road','Piliyandala');
+
+/*Table structure for table `blog_post` */
+
+DROP TABLE IF EXISTS `blog_post`;
+
+CREATE TABLE `blog_post` (
+  `created_date_time` datetime NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `description` varchar(400) NOT NULL,
+  `post` blob NOT NULL,
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT '0',
+  `staff_email` varchar(100) NOT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `fk_blog_post_staff1_idx` (`staff_email`),
+  CONSTRAINT `fk_blog_post_staff1` FOREIGN KEY (`staff_email`) REFERENCES `staff` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `blog_post` */
+
+/*Table structure for table `comments` */
+
+DROP TABLE IF EXISTS `comments`;
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `comment` longtext NOT NULL,
+  `comment_date_time` datetime NOT NULL,
+  `blog_post_post_id` int(11) NOT NULL,
+  `users_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `comments` */
 
 /*Table structure for table `name` */
 
@@ -42,11 +76,37 @@ CREATE TABLE `name` (
   `second_name` varchar(20) DEFAULT NULL,
   `last_name` varchar(20) NOT NULL,
   PRIMARY KEY (`name_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8;
 
 /*Data for the table `name` */
 
-insert  into `name`(`name_id`,`first_name`,`second_name`,`last_name`) values (249,'Vimukthi','','Saranga');
+insert  into `name`(`name_id`,`first_name`,`second_name`,`last_name`) values (253,'Vimukthi','','Saranga');
+
+/*Table structure for table `staff` */
+
+DROP TABLE IF EXISTS `staff`;
+
+CREATE TABLE `staff` (
+  `email` varchar(100) NOT NULL,
+  `password` varchar(32) DEFAULT NULL,
+  `previous_password` varchar(32) DEFAULT NULL,
+  `registered_date_time` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `login_attempt` int(11) DEFAULT NULL,
+  `contact_no` varchar(10) DEFAULT NULL,
+  `address_address_id` int(11) NOT NULL,
+  `name_name_id` int(11) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  KEY `fk_staff_address_idx` (`address_address_id`),
+  KEY `fk_staff_name1_idx` (`name_name_id`),
+  CONSTRAINT `fk_staff_address` FOREIGN KEY (`address_address_id`) REFERENCES `address` (`address_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_staff_name1` FOREIGN KEY (`name_name_id`) REFERENCES `name` (`name_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `staff` */
+
+insert  into `staff`(`email`,`password`,`previous_password`,`registered_date_time`,`status`,`login_attempt`,`contact_no`,`address_address_id`,`name_name_id`) values ('v.saranga@yahoo.com','098f6bcd4621d373cade4e832627b4f6','098f6bcd4621d373cade4e832627b4f6','2017-08-09 10:50:00',1,0,'0711790372',253,253);
 
 /*Table structure for table `users` */
 
@@ -71,7 +131,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`email`,`contact_no`,`registered_date_time`,`status`,`address_address_id`,`name_name_id`,`password`,`previous_password`,`login_attempt`) values ('v.saranga@yahoo.com','0711790372','2017-08-07 10:43:02',1,249,249,'098f6bcd4621d373cade4e832627b4f6','098f6bcd4621d373cade4e832627b4f6',0);
+insert  into `users`(`email`,`contact_no`,`registered_date_time`,`status`,`address_address_id`,`name_name_id`,`password`,`previous_password`,`login_attempt`) values ('v.saranga@yahoo.com','0711790372','2017-08-08 22:07:49',1,253,253,'098f6bcd4621d373cade4e832627b4f6','a102dcd9306cc398a0a8c749254525ce',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
