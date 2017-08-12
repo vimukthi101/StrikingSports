@@ -77,7 +77,9 @@ Striking Sports";
 							$userPassword = $row['password'];
 							$userStatus = $row['status'];
 							$userPreviousPassword = $row['previous_password'];
+							$position = $row['position'];
 							//sessions
+							$_SESSION['position'] = $position;
 							$_SESSION['name_id'] = $userNameId;
 							$_SESSION['email'] = $userNIC;
 							$_SESSION['address_id'] = $userAddressID;
