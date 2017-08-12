@@ -44,12 +44,27 @@ CREATE TABLE `blog_post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `status` int(11) DEFAULT '0',
   `staff_email` varchar(100) NOT NULL,
+  `tag` text,
+  `category_id` int(11) NOT NULL,
+  `views` int(11) DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `fk_blog_post_staff1_idx` (`staff_email`),
   CONSTRAINT `fk_blog_post_staff1` FOREIGN KEY (`staff_email`) REFERENCES `staff` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `blog_post` */
+
+/*Table structure for table `category` */
+
+DROP TABLE IF EXISTS `category`;
+
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(100) NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `category` */
 
 /*Table structure for table `comments` */
 
@@ -65,6 +80,20 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `comments` */
+
+/*Table structure for table `like` */
+
+DROP TABLE IF EXISTS `like`;
+
+CREATE TABLE `like` (
+  `like_id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `blog_post_id` int(11) NOT NULL,
+  `users_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`like_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `like` */
 
 /*Table structure for table `name` */
 
@@ -96,6 +125,7 @@ CREATE TABLE `staff` (
   `contact_no` varchar(10) DEFAULT NULL,
   `address_address_id` int(11) NOT NULL,
   `name_name_id` int(11) NOT NULL,
+  `position` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`email`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_staff_address_idx` (`address_address_id`),
@@ -106,7 +136,7 @@ CREATE TABLE `staff` (
 
 /*Data for the table `staff` */
 
-insert  into `staff`(`email`,`password`,`previous_password`,`registered_date_time`,`status`,`login_attempt`,`contact_no`,`address_address_id`,`name_name_id`) values ('v.saranga@yahoo.com','098f6bcd4621d373cade4e832627b4f6','098f6bcd4621d373cade4e832627b4f6','2017-08-09 10:50:00',1,0,'0711790372',253,253);
+insert  into `staff`(`email`,`password`,`previous_password`,`registered_date_time`,`status`,`login_attempt`,`contact_no`,`address_address_id`,`name_name_id`,`position`) values ('v.saranga@yahoo.com','098f6bcd4621d373cade4e832627b4f6','098f6bcd4621d373cade4e832627b4f6','2017-08-09 10:50:00',1,0,'0711790372',253,253,1);
 
 /*Table structure for table `users` */
 
