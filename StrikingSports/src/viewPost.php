@@ -7,6 +7,7 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
+include_once('../ssi/db.php');
 ?>
 
 <body style="overflow:visible;">
@@ -15,7 +16,7 @@ include_once('../ssi/header.php');
     </div>
     <?php
 		include_once('../ssi/sideMenuStaff.php');
-		include_once('../ssi/topMenu.php');
+		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
@@ -23,7 +24,59 @@ include_once('../ssi/header.php');
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> View A <span> Blog Post</span></h2>
             </div>
-            
+            <div class="col-md-4">
+                <div class="form-group">
+                    <p class="control-label">Title </p>
+                    <div>
+                        <input class="form-control" onkeyup="showTitle(this.value);" type="text" name="title" id="title" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Created Date </p>
+                    <div>
+                        <input class="form-control" onClick="showDate(this.value);" type="date" name="date" id="date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Status </p>
+                    <div>
+                    	<select class="form-control" onChange="showStatus(this.value);" name="sta" id="sta">
+                        	<option disabled selected>--Select a status--</option>
+                        	<option value="0">Draft</option>
+                            <option value="1">Pending Approval</option>
+                            <option value="2">Published</option>
+                            <option value="3">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Tags </p>
+                    <div>
+                        <input class="form-control" onkeyup="showTags(this.value);" type="text" name="tags" id="tags" />
+                    </div>
+                </div>
+				<?php
+                $getCategory = "SELECT * FROM category";
+                $resultCategory = mysqli_query($con, $getCategory);
+                if(mysqli_num_rows($resultCategory)!=0){
+                    echo '<div class="form-group">
+                            <p class="control-label">Categories </p>
+                            <div>
+                                <select class="form-control" onChange="showCategory(this.value);" name="category" id="category">
+									<option disabled selected>--Select a category--</option>';
+                    while($rowCategory = mysqli_fetch_array($resultCategory)){
+                        $categoryId = $rowCategory['category_id'];
+                        $category = $rowCategory['category'];
+                        echo '<option value="'.$categoryId.'">'.$category.'</option>';
+                    }
+                    echo '</select>
+                            </div>
+                        </div>';
+                }
+                ?>      
+            </div>
+            <div class="col-md-8 table-responsive" id="txtHint">
+            </div>
         </div>
     </section>
     <?php
@@ -31,6 +84,38 @@ include_once('../ssi/header.php');
 	?>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script>
+		function showTitle(str) {
+			if (str.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "getPost.php?p=" + str, true);
+				xmlhttp.send();
+			}
+		}
+		function showTags(str) {
+			if (str.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "getPost.php?q=" + str, true);
+				xmlhttp.send();
+			}
+		}
+	</script>
     <script type="text/javascript">
 		$(document).ready(function() {
 			"use strict";

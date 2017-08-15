@@ -15,7 +15,7 @@ include_once('../ssi/header.php');
     </div>
     <?php
 		include_once('../ssi/sideMenuStaff.php');
-		include_once('../ssi/topMenu.php');
+		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
@@ -67,11 +67,11 @@ include_once('../ssi/header.php');
                 <form method="post" action="controller/addPostController.php" role="form" class="form-horizontal">
                		<div class="form-group col-md-11">
                     	<h2>Enter The Title </h2>
-                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern="[a-zA-Z]+" class="form-control" />
+                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern="[a-zA-Z]+" class="form-control" title="Should be letters only" />
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Enter A Description </h2>
-                    	<input placeholder="Enter A Description For Your Blog Post" required type="text" id="description" name="description" pattern="[a-zA-Z]+" class="form-control" />
+                    	<input placeholder="Enter A Description For Your Blog Post" maxlength="400" required type="text" id="description" name="description" pattern="[a-zA-Z]+" class="form-control" title="Should be letters only"/>
                     </div>
                 	<div class="form-group col-md-11">
                     	<h2>Enter The Content </h2>
@@ -79,7 +79,7 @@ include_once('../ssi/header.php');
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Enter The Tags </h2>
-                    	<input type="text" id="tags" name="tags" class="form-control" pattern="[a-zA-Z,]+" placeholder="Enter A Comma Separated List Of Tags e.g.: cricket,sri lanka,sangakkara"/>
+                    	<input type="text" id="tags" name="tags" class="form-control" pattern="[a-zA-Z,]+" placeholder="Enter A Comma Separated List Of Tags e.g.: cricket,sri lanka,sangakkara" title="Should be letters only. Use the comma as the separator"/>
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Select A Category </h2>
