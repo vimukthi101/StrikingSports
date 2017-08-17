@@ -34,7 +34,7 @@ include_once('../ssi/db.php');
                 <div class="form-group">
                     <p class="control-label">Created Date </p>
                     <div>
-                        <input class="form-control" onClick="showDate(this.value);" type="date" name="date" id="date" />
+                        <input class="form-control" onChange="showDate(this.value);" type="date" name="date" id="date" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,8 +75,8 @@ include_once('../ssi/db.php');
                 }
                 ?>      
             </div>
-            <div class="col-md-8 table-responsive" id="txtHint">
-            </div>
+                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1 table-responsive" id="txtHint">
+                </div>
         </div>
     </section>
     <?php
@@ -112,6 +112,51 @@ include_once('../ssi/db.php');
 					}
 				};
 				xmlhttp.open("GET", "getPost.php?q=" + str, true);
+				xmlhttp.send();
+			}
+		}
+		function showDate(str) {
+			if (str.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "getPost.php?r=" + str, true);
+				xmlhttp.send();
+			}
+		}
+		function showStatus(str) {
+			if (str.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "getPost.php?s=" + str, true);
+				xmlhttp.send();
+			}
+		}
+		function showCategory(str) {
+			if (str.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "getPost.php?t=" + str, true);
 				xmlhttp.send();
 			}
 		}
