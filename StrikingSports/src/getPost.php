@@ -29,12 +29,11 @@ if($p != ""){
 }
 $resultGetPost = mysqli_query($con, $getPost);
 if(mysqli_num_rows($resultGetPost) != 0){
-echo '<table class="table text-center table-striped">
+echo '<table class="table table-striped">
 		<tr>
 			<td>Created Date Time</td>
 			<td>Title</td>
 			<td>Description</td>
-			<td>Post</td>
 			<td>Status</td>
 			<td>Tags</td>
 			<td>Category</td>
@@ -45,7 +44,6 @@ while($rowPosts = mysqli_fetch_array($resultGetPost)){
 	$dateTime = $rowPosts['created_date_time'];
 	$title = $rowPosts['title'];
 	$description = $rowPosts['description'];
-	$post = $rowPosts['post'];
 	$status = $rowPosts['status'];
 	$tag = $rowPosts['tag'];
 	$category = $rowPosts['category_id'];
@@ -53,7 +51,6 @@ while($rowPosts = mysqli_fetch_array($resultGetPost)){
 		<td>'.$dateTime.'</td>
 		<td>'.$title.'</td>
 		<td>'.$description.'</td>
-		<td>'.$post.'</td>
 		<td>'.$status.'</td>
 		<td>'.$tag.'</td>
 		<td>'.$category.'</td>

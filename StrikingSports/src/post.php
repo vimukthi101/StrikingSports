@@ -22,6 +22,7 @@ include_once('../ssi/db.php');
 	?>
     <section>
     <?php
+		$email = $_SESSION['email'];
 		$id = trim(htmlspecialchars(mysqli_real_escape_string($con,$_GET["id"])));
 		$getPost = "SELECT * FROM blog_post WHERE post_id='".$id."'";
 		$resultPost = mysqli_query($con, $getPost);
@@ -55,22 +56,43 @@ include_once('../ssi/db.php');
 						$category = $rowCategory['category'];
 					}
 				}
-				$getComments = "SELECT * FROM comments WHERE blog_post_post_id='".$id."'";
-				$resultComments = mysqli_query($con, $getComments);
-				if(mysqli_num_rows($resultComments)!=0){
-					while($rowComments = mysqli_fetch_array($resultComments)){
-						$commentId = $rowComments['comment_id'];
-						$comment = $rowComments['comment'];
-						$commentDate = $rowComments['comment_date_time'];
-						$commentUser = $rowComments['users_email'];
+				$getLike = "SELECT COUNT(STATUS) AS likes FROM likes WHERE blog_post_id='".$id."' AND STATUS='0'";
+				$resultLike = mysqli_query($con, $getLike);
+				if(mysqli_num_rows($resultLike)!=0){
+					while($rowLike = mysqli_fetch_array($resultLike)){
+						$likes = $rowLike['likes'];
 					}
+				}
+				$getUnLike = "SELECT COUNT(STATUS) AS unlikes FROM likes WHERE blog_post_id='".$id."' AND STATUS='1'";
+				$resultUnLike = mysqli_query($con, $getUnLike);
+				if(mysqli_num_rows($resultUnLike)!=0){
+					while($rowUnLike = mysqli_fetch_array($resultUnLike)){
+						$unLikes = $rowUnLike['unlikes'];
+					}
+				}
+				$getLikedStatus = "SELECT status FROM likes WHERE users_email='".$email."' AND blog_post_id='".$id."'";
+				$resultLikedStatus = mysqli_query($con, $getLikedStatus);
+				if(mysqli_num_rows($resultLikedStatus)!=0){
+					while($rowLikedStatus = mysqli_fetch_array($resultLikedStatus)){
+						$postLikeStatus = $rowLikedStatus['status'];
+					}
+				} else {
+					$postLikeStatus =2;
 				}
 			}
 			echo '<div class="lp spe-bot-red-3">
 			<div class="p-mf"><h4><span>Created On : </span>'.$date.'<span> By : </span>'.$name.'</h4></div>
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> '.$title.'</h2>
-				<h3><i class="fa fa-eye" aria-hidden="true"></i><span> '.$views.' </span><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$views.' </span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$views.'</span></h3>
+				<h3><a><i class="fa fa-eye" aria-hidden="true"></i><span> '.$views.' </span></a>';
+				if($postLikeStatus == 0){
+					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=0"><i class="fa fa-thumbs-up" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+				} else if($postLikeStatus == 1) {
+					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=1"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=1"><i class="fa fa-thumbs-down" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+				} else if($postLikeStatus == 2) {
+					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=2"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=2"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+				}
+				echo '</h3>
             </div>
 			<div class="p-mf"><h4>'.$description.'</h4></div>
 			<div class="p-mf"><p>'.$post.'</p></div>
@@ -78,6 +100,51 @@ include_once('../ssi/db.php');
 			<div class="p-mf"><h4>Category : <span>'.$category.'</span></h4></div>
 			<div class="p-mf"><h4>Comments : </h4></div>
         </div>';
+				$getComments = "SELECT * FROM comments WHERE blog_post_post_id='".$id."' ORDER BY comment_date_time";
+				$resultComments = mysqli_query($con, $getComments);
+				if(mysqli_num_rows($resultComments)!=0){
+					while($rowComments = mysqli_fetch_array($resultComments)){
+						$commentId = $rowComments['comment_id'];
+						$comment = $rowComments['comments'];
+						$commentDate = $rowComments['comment_date_time'];
+						$commentUser = $rowComments['users_email'];
+						$getCommentLike = "SELECT COUNT(STATUS) as likes FROM comment_like WHERE comment_id='".$commentId."' AND STATUS='0'";
+						$resultCommentLike = mysqli_query($con, $getCommentLike);
+						if(mysqli_num_rows($resultCommentLike)!=0){
+							while($rowCommentLike = mysqli_fetch_array($resultCommentLike)){
+								$commentLike = $rowCommentLike['likes'];
+							}
+						}
+						$getCommentUnLike = "SELECT COUNT(STATUS) as likes FROM comment_like WHERE comment_id='".$commentId."' AND STATUS='1'";
+						$resultCommentUnLike = mysqli_query($con, $getCommentUnLike);
+						if(mysqli_num_rows($resultCommentUnLike)!=0){
+							while($rowCommentUnLike = mysqli_fetch_array($resultCommentUnLike)){
+								$commentUnLike = $rowCommentUnLike['likes'];
+							}
+						}
+						echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
+								<div class="p-mf">
+									<p>'.$commentDate.' by '.$commentUser.'</p>
+									<textarea disabled>'.$comment.'</textarea>
+									<p><a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href=""><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a><a onClick="load();"><span class="pull-right">Reply</span></a></p>
+									<p id="new"></p>
+								</div>
+							</div>';
+					}
+				}
+				echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
+						<div class="p-mf">
+						<form role="form" class="form-group" action="controller/commentController.php" method="post">
+							<div style="padding:10px;">
+								<textarea id="comment" name="comment" class="form-control" required></textarea>
+								<input type="text" name="post" id="post" hidden="" value="'.$id.'">
+							</div>
+							<div class="col-md-2 pull-right" style="padding:10px;">
+								<input type="submit" id="submit" name="submit" value="Post Comment" class="form-control btn btn-success">
+							</div>
+						</form>
+						</div>
+					 </div>';
 		} else {
 			echo '<div class="lp spe-bot-red-3 text-center" style="height:400px;">
             <div class="inn-title">
@@ -92,6 +159,11 @@ include_once('../ssi/db.php');
 	?>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript">
+		 function load() { 
+			document.getElementById('new').innerHTML = '<form role="form" class="form-group" action="" method="post"><div style="padding:10px;"><textarea id="replyComment" name="replyComment" class="form-control" required></textarea></div><div class="col-md-1 pull-right" style="padding:10px;"><input type="submit" id="submit" name="submit" value="Reply" class="form-control btn btn-success"></div></form>'; 
+		 } 
+	</script>
     <script type="text/javascript">
 		$(document).ready(function() {
 			"use strict";
