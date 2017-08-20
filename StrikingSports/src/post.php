@@ -37,6 +37,7 @@ include_once('../ssi/db.php');
 				$tags = $rowPost['tag'];
 				$categoryId = $rowPost['category_id'];
 				$views = $rowPost['views'];
+				$image = $rowPost['image'];
 				$getName = "SELECT first_name, second_name, last_name FROM NAME WHERE name_id IN(SELECT name_name_id FROM staff WHERE email='".$staff."')";
 				$resultName = mysqli_query($con, $getName);
 				if(mysqli_num_rows($resultName)!=0){
@@ -94,6 +95,7 @@ include_once('../ssi/db.php');
 				}
 				echo '</h3>
             </div>
+			<div class="p-mf"><img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:300px;"></img></div>
 			<div class="p-mf"><h4>'.$description.'</h4></div>
 			<div class="p-mf"><p>'.$post.'</p></div>
 			<div class="p-mf"><h4>Tags : <span>'.$tags.'</span></h4></div>
@@ -122,11 +124,28 @@ include_once('../ssi/db.php');
 								$commentUnLike = $rowCommentUnLike['likes'];
 							}
 						}
+						$getCommentLikedStatus = "SELECT status FROM comment_like WHERE users_email='".$email."' AND comment_id='".$commentId."'";
+						$resultCommentLikedStatus = mysqli_query($con, $getCommentLikedStatus);
+						if(mysqli_num_rows($resultCommentLikedStatus)!=0){
+							while($rowCommentLikedStatus = mysqli_fetch_array($resultCommentLikedStatus)){
+								$commentLikeStatus = $rowCommentLikedStatus['status'];
+							}
+						} else {
+							$commentLikeStatus =2;
+						}
 						echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
 								<div class="p-mf">
 									<p>'.$commentDate.' by '.$commentUser.'</p>
 									<textarea disabled>'.$comment.'</textarea>
-									<p><a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href=""><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a><a onClick="load();"><span class="pull-right">Reply</span></a></p>
+									<p>';
+						if($commentLikeStatus == 0){
+							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a><a onClick="load();"><span class="pull-right">Reply</span></a>';	
+						} else if($commentLikeStatus == 1) {
+							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentUnLike.'</span></a><a onClick="load();"><span class="pull-right">Reply</span></a>';
+						} else if($commentLikeStatus == 2) {
+							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a><a onClick="load();"><span class="pull-right">Reply</span></a>';
+						}
+									echo '</p>
 									<p id="new"></p>
 								</div>
 							</div>';

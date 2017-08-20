@@ -7,6 +7,7 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
+include_once('../ssi/db.php');
 ?>
 
 <body style="overflow:visible;">
@@ -60,18 +61,26 @@ include_once('../ssi/header.php');
                             echo '<div style="padding:3px;">
                                     <label class="form-control">Post Saved As Draft. Send It For Approval For Publishing.</label>
                                 </div>';
-                        } 
+                        } else if($error == 'ii'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control">Please Upload A Valid Image.</label>
+                                </div>';
+                        }
                     }
                     ?>
                 </div>
-                <form method="post" action="controller/addPostController.php" role="form" class="form-horizontal">
+                <form method="post" action="controller/addPostController.php" role="form" class="form-horizontal" enctype="multipart/form-data">
                		<div class="form-group col-md-11">
                     	<h2>Enter The Title </h2>
-                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern="[a-zA-Z]+" class="form-control" title="Should be letters only" />
+                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern="[A-Za-z\s]+" class="form-control" title="Should be letters only" />
+                    </div>
+                    <div class="form-group col-md-11">
+                    	<h2>Add A Cover Image </h2>
+                    	<input required type="file" id="image" name="image" class="form-control" title="Should be a valid image" accept="image/*"/>
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Enter A Description </h2>
-                    	<input placeholder="Enter A Description For Your Blog Post" maxlength="400" required type="text" id="description" name="description" pattern="[a-zA-Z]+" class="form-control" title="Should be letters only"/>
+                    	<input placeholder="Enter A Description For Your Blog Post" maxlength="400" required type="text" id="description" name="description" pattern="[A-Za-z\s]+" class="form-control" title="Should be letters only"/>
                     </div>
                 	<div class="form-group col-md-11">
                     	<h2>Enter The Content </h2>
@@ -81,15 +90,23 @@ include_once('../ssi/header.php');
                     	<h2>Enter The Tags </h2>
                     	<input type="text" id="tags" name="tags" class="form-control" pattern="[a-zA-Z,]+" placeholder="Enter A Comma Separated List Of Tags e.g.: cricket,sri lanka,sangakkara" title="Should be letters only. Use the comma as the separator"/>
                     </div>
-                    <div class="form-group col-md-11">
-                    	<h2>Select A Category </h2>
-                    	<select class="form-control" id="category" name="category">
-                        	<option selected disabled>--Select A Category From Here--</option>
-                            <option value="1">Cricket</option>
-                            <option value="2">Athletics</option>
-                            <option value="3">Swimming</option>
-                        </select>
-                    </div>
+                    <?php
+					$getCategory = "SELECT * FROM category";
+					$resultCategory = mysqli_query($con, $getCategory);
+					if(mysqli_num_rows($resultCategory)!=0){
+						echo '<div class="form-group col-md-11">
+								<h2>Select A Category </h2>
+									<select class="form-control" onChange="showCategory(this.value);" id="category" name="category">
+										<option disabled selected>--Select a category--</option>';
+						while($rowCategory = mysqli_fetch_array($resultCategory)){
+							$categoryId = $rowCategory['category_id'];
+							$category = $rowCategory['category'];
+							echo '<option value="'.$categoryId.'">'.$category.'</option>';
+						}
+						echo '</select>
+							</div>';
+					}
+					?>
                     <div class="form-group col-md-11 text-center">
                     	<input type="submit" name="submit" id="submit" class="btn" value="Save as Draft">
                         <input type="submit" name="submit" id="submit" class="btn btn-success" value="Send for Approval">

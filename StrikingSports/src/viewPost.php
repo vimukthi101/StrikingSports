@@ -24,6 +24,16 @@ include_once('../ssi/db.php');
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> View A <span> Blog Post</span></h2>
             </div>
+            <?php
+				if(isset($_GET['error'])){
+				$error = $_GET['error'];
+				if($error == 'su'){
+					echo '<div style="padding:3px;">
+							<label class="form-control">Blog post delete successfully.</label>
+						</div>';
+					}
+				}
+			?>
             <div class="col-md-4">
                 <div class="form-group">
                     <p class="control-label">Title </p>
