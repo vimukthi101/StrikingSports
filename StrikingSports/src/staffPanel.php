@@ -7,9 +7,10 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
+include_once('../ssi/db.php');
 if(isset($_SESSION['position']) && $_SESSION['position']==1){
 ?>
-
+<!--editor home page-->
 <body style="overflow:visible;">
     <div id="preloader" style="display: none;">
         <div id="status" style="display: none;">&nbsp;</div>
@@ -24,46 +25,112 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
         	<div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> My Blog <span> Posts Stats</span></h2>
                 <div class="hom-trend-con">
-                    <span class="col-md-3"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Drafts : 9</span>
-                    <span class="col-md-3"><i class="fa fa-check-circle" aria-hidden="true"></i> Published : 23</span>
-                    <span class="col-md-3"><i class="fa fa-ban" aria-hidden="true"></i> Rejected : 16</span>
-                    <span class="col-md-3"><i class="fa fa-clock-o" aria-hidden="true"></i> Pending Approval : 11</span>
+                	<?php
+                		$draft = "SELECT COUNT(*) as draft FROM blog_post WHERE STATUS='0'";
+						$rDraft = mysqli_query($con, $draft);
+						$pending = "SELECT COUNT(*) as pending FROM blog_post WHERE STATUS='1'";
+						$rPending = mysqli_query($con, $pending);
+						$published = "SELECT COUNT(*) as published FROM blog_post WHERE STATUS='2'";
+						$rPublished = mysqli_query($con, $published);
+						$rejected = "SELECT COUNT(*) as rejected FROM blog_post WHERE STATUS='3'";
+						$rRejected = mysqli_query($con, $rejected);
+						if(mysqli_num_rows($rDraft)!=0 && mysqli_num_rows($rPending)!=0 && mysqli_num_rows($rPublished)!=0 && mysqli_num_rows($rRejected)!=0){
+							while($rowDraft = mysqli_fetch_array($rDraft)){
+								$cDraft = $rowDraft['draft'];
+								if(empty($cDraft)){
+									$cDraft = 0;
+								}
+							}
+							while($rowPending = mysqli_fetch_array($rPending)){
+								$cPending = $rowDraft['pending'];
+								if(empty($cPending)){
+									$cPending = 0;
+								}
+							}
+							while($rowPublished = mysqli_fetch_array($rPublished)){
+								$cPublished = $rowDraft['published'];
+								if(empty($cPublished)){
+									$cPublished = 0;
+								}
+							}
+							while($rowRejected = mysqli_fetch_array($rRejected)){
+								$cRejected = $rowDraft['rejected'];
+								if(empty($cRejected)){
+									$cRejected = 0;
+								}
+							}
+						}
+					?>
+                    <span class="col-md-3"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Drafts : <?php echo $cDraft ?></span>
+                    <span class="col-md-3"><i class="fa fa-check-circle" aria-hidden="true"></i> Published : <?php echo $cPublished ?></span>
+                    <span class="col-md-3"><i class="fa fa-ban" aria-hidden="true"></i> Rejected : <?php echo $cRejected ?></span>
+                    <span class="col-md-3"><i class="fa fa-clock-o" aria-hidden="true"></i> Pending Approval : <?php echo $cPending ?></span>
                 </div>
             </div>
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> Recent Blog Posts <span> By Me</span></h2>
             </div>
             <?php
-			for($j=0;$j<3;$j++){
-				echo '<div class="p-join-club">';
-				for($i=0;$i<4;$i++){
-					echo '
-						<div class="col-md-3">
+			$email = $_SESSION['email'];
+			$getPost = "SELECT * FROM blog_post WHERE staff_email='".$email."' ORDER BY created_date_time";
+			$rGetPost = mysqli_query($con, $getPost);
+			if(mysqli_num_rows($rGetPost)!=0){
+				while($rowGetPost = mysqli_fetch_array($rGetPost)){
+					$date = $rowGetPost['created_date_time'];
+					$id = $rowGetPost['post_id'];
+					$title = $rowGetPost['title'];
+					$description = $rowGetPost['description'];
+					$image = $rowGetPost['image'];
+					$views = $rowGetPost['views'];
+					$getLike = "SELECT COUNT(STATUS) AS likes FROM likes WHERE blog_post_id='".$id."' AND STATUS='0'";
+					$resultLike = mysqli_query($con, $getLike);
+					if(mysqli_num_rows($resultLike)!=0){
+						while($rowLike = mysqli_fetch_array($resultLike)){
+							$likes = $rowLike['likes'];
+						}
+					}
+					$getUnLike = "SELECT COUNT(STATUS) AS unlikes FROM likes WHERE blog_post_id='".$id."' AND STATUS='1'";
+					$resultUnLike = mysqli_query($con, $getUnLike);
+					if(mysqli_num_rows($resultUnLike)!=0){
+						while($rowUnLike = mysqli_fetch_array($resultUnLike)){
+							$unLikes = $rowUnLike['unlikes'];
+						}
+					}
+					$getComments = "SELECT COUNT(*) as comments FROM comments WHERE blog_post_post_id='".$id."'";
+					$resultComments = mysqli_query($con, $getComments);
+					if(mysqli_num_rows($resultComments)!=0){
+						while($rowComments = mysqli_fetch_array($resultComments)){
+							$comments = $rowComments['comments'];
+						}
+					}
+					echo '<div class="p-join-club">
+						<div class="col-md-4">
 							<div class="hom-trend">
 								<div class="hom-trend-img">
-									<img class="img-responsive" src="../images/1.jpg" alt="">
+									<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:300px;"></img>
 								</div>
 								<div class="hom-trend-con">
-									<span><i class="fa fa-calendar" aria-hidden="true"></i> 02/08/2017</span>
-									<span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>500</span>
-									<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>200</span>
-									<span><i class="fa fa-comment-o" aria-hidden="true"></i>300</span>
-									<span><i class="fa fa-eye" aria-hidden="true"></i>1000</span>
+									<span><i class="fa fa-calendar" aria-hidden="true"></i> '.$date.'</span>
+									<span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> '.$likes.'</span>
+									<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> '.$unLikes.'</span>
+									<span><i class="fa fa-comment-o" aria-hidden="true"></i> '.$comments.'</span>
+									<span><i class="fa fa-eye" aria-hidden="true"></i> '.$views.'</span>
 									<a href="viewPost.php?id=">
-										<h4>Kick Off: What you need to know today</h4>
+										<h4>'.$title.'</h4>
 									</a>
-									<p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
+									<p>'.$description.'</p>
 								</div>
 								<div class="hom-trend-con">
-									<a href="deletePost.php?id="><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Dele.</span></a>
-									<a href="viewPost.php?id="><span class="col-sm-4"><i class="fa fa-eye" aria-hidden="true"></i>View</span>
-									<a href="editPost.php?id="><span class="col-sm-4"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</span>
+									<a href="deletePost.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</span></a>
+									<a href="post.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-eye" aria-hidden="true"></i>View</span>
+									<a href="editPost.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</span>
 								</div>
 							</div>
 						</div>
-					';
+					</div>';
 				}
-				echo '</div>';
+			} else {
+				echo '<h2 class="text-center">No Blog Posts To Show</h2>';	
 			}
 			?>
         </div>
@@ -109,6 +176,16 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 		});
 	</script>
 </body>
+<?php
+} else if(isset($_SESSION['position']) && $_SESSION['position']==0){
+?>
+<!--admin home page-->
+
+<?php
+} else if(isset($_SESSION['position']) && $_SESSION['position']==2){
+?>
+<!--approver home page-->
+
 <?php
 } else {
 	//404 page	
