@@ -7,6 +7,7 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
+include_once('../ssi/db.php');
 ?>
 
 <body style="overflow:visible;">
@@ -15,15 +16,58 @@ include_once('../ssi/header.php');
     </div>
     <?php
 		include_once('../ssi/sideMenuStaff.php');
-		include_once('../ssi/topMenu.php');
+		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
-        <div class="lp spe-bot-red-3">
+        <div class="lp spe-bot-red-3" style="height:400px;">
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> Add A <span> New Category</span></h2>
             </div>
-            
+            <div class="p-mf">
+            	<div class="spe-title-1 spe-title-wid">
+					<?php
+                    if(isset($_GET['error'])){
+                        $error = $_GET['error'];
+                        if($error == 'ns'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control">Please Submit The Form.</label>
+                                </div>';
+                        } else if($error == 'ef'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control" style="height:35px;">Required Fields Cannot Be Empty.</label>
+                                </div>';
+                        } else if($error == 'wc'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control" style="height:35px;">Category Can Contain Only Letters.</label>
+                                </div>';
+                        } else if($error == 'ec'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control">Category Already Exsisting.</label>
+                                </div>';
+                        } else if($error == 'pt'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control">Please Try Again Later.</label>
+                                </div>';
+                        } else if($error == 'su'){
+                            echo '<div style="padding:3px;">
+                                    <label class="form-control">Category Added Successfully.</label>
+                                </div>';
+                        }
+                    }
+                    ?>
+                </div>
+                <form method="post" action="controller/addCategoryController.php" role="form" class="form-horizontal" enctype="multipart/form-data">
+               		<div class="form-group col-md-11">
+                    	<h2>Enter The Category </h2>
+                    	<input placeholder="Add A New Category" required type="text" id="category" name="category" pattern="[A-Za-z\s]+" class="form-control" title="Should be letters only" />
+                    </div>
+                    <div class="form-group col-md-11 text-center">
+                    	<input type="submit" name="submit" id="submit" class="btn btn-success" value="Submit">
+                        <input type="reset" name="clear" id="clear" class="btn btn-warning" value="Clear">
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
     <?php

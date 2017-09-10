@@ -11,7 +11,7 @@
                 <a href="../src/addCategory.php"><img src="../images/c3.png" alt=""> Add Category</a>
             </li>
             <li>
-                <a href="../src/viewCategory.php"><img src="../images/c6.png" alt=""> View Category</a>
+                <a href="../src/removeCategory.php"><img src="../images/c6.png" alt=""> Remove Category</a>
             </li>
             <li>
                 <a href="../src/addPost.php"><img src="../images/f6.png" alt=""> Add Post</a>
