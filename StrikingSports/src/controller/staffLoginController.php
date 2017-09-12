@@ -97,7 +97,7 @@ Striking Sports";
 							if($userStatus == "1"){
 								if($userPreviousPassword == ""){
 									//if successfull and if it is the first login then redirect to cahnge password
-									header('Location:../changePassword.php');	
+									header('Location:../changeStaffPassword.php');	
 								} else {
 									//if successfull then redirect to home based on the position
 									header('Location:../staffPanel.php');	
