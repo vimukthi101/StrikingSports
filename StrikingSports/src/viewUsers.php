@@ -86,15 +86,14 @@ include_once('../ssi/db.php');
                                         <td>'.$fName.' '.$lName.'</td>
 										<td>'.$aNo.','.$lane.','.$city.'</td>
 										<td>'.$contact.'</td>
-                                        <td>
-                                        <span><a class="link-btn" href="controller/editUser.php?id='.$userEmail.'"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
-                                        <span><a href="controller/deleteUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>';
+                                        <td>';
 										if($status == 0){
-											echo '<span><a href="controller/activateUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></span>';
+											echo '<span><a onclick="return confirm(\'Do You Wish to Activate The User?\');return false;" href="controller/activateUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></span>';
 										} else if($status == 1){
-											echo '<span><a href="controller/deactivateUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a></span>';
+											echo '<span><a onclick="return confirm(\'Do You Wish to Disable The User?\');return false;" href="controller/deactivateUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a></span>';
 										}
-									echo '</td>
+										echo '<span>&nbsp;</span><span><a class="link-btn" href="editStaff.php?id='.$userEmail.'"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
+                                        <span><a onclick="return confirm(\'Do You Wish to Delete The User Account?\');return false;" href="controller/deleteUser.php?id='.$userEmail.'" class="link-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span></td>
                                     </tr>';
                             }
                             echo '</tbody>

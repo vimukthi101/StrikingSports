@@ -9,7 +9,6 @@ TO DO
 3) reply comment add
 4) admin staff panels
 5) staff profile management, can use the same from user profile management
-6) edit, delete, active, disable users finish
 
 staff position
 ##############
