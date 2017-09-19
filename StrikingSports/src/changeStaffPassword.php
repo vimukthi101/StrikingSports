@@ -15,8 +15,15 @@ if(isset($_SESSION['email'])){
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
     <?php
-		include_once('../ssi/sideMenu.php');
-		include_once('../ssi/topMenu.php');
+		$ePosition = $_SESSION['position'];
+		if($ePosition == 0){
+			include_once('../ssi/sideMenuAdmin.php');
+		} else if($ePosition == 1){
+			include_once('../ssi/sideMenuStaff.php');
+		} else if($ePosition == 2){
+			include_once('../ssi/sideMenuApprover.php');
+		}
+		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
@@ -84,11 +91,9 @@ if(isset($_SESSION['email'])){
     </div>
 	</section>
 <?php
-		include_once('../ssi/latestPost.php');
-		include_once('../ssi/footer.php');
 		include_once('../ssi/copyRights.php');
 	?>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript">
 		$(document).ready(function() {

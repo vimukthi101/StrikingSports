@@ -14,7 +14,7 @@
 					if(isset($_SESSION['email'])){
 					?>
                    		<li class="top-scal">
-                            <a href="../src/Profile.php">
+                            <a href="../src/staffProfile.php">
                                 <i class="fa fa-ticket" aria-hidden="true"></i> Welcome <?php echo $_SESSION['first_name'];?>
                             </a>
                         </li>
