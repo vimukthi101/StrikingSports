@@ -2,6 +2,7 @@
 	if(!isset($_SESSION[''])){
 		session_start();	
 	}
+	include_once('ssi/db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,13 +42,7 @@
                 </li>
                 <li>
                     <a href="src/squads.php"><img src="./images/f7.png" alt=""> Squad</a>
-                </li>
-                <li>
-                    <a href="src/liveMatch.php"><img src="./images/c4.png" alt=""> Live match</a>
-                </li>			
-                <li>
-                    <a href="src/join.php"><img src="./images/cy5.png" alt=""> Join Club</a>
-                </li>				
+                </li>		
                 <li>
                     <a href="src/about.php"><img src="./images/about.png" alt=""> About</a>
                 </li>
@@ -67,7 +62,7 @@
         <div class="i-head row">
             <div class="i-head-left i-head-com col-md-6">
                 <ul>
-                    <li><a href="">phone: +00 0000 0000</a>
+                    <li><a href="">phone: +94 7795 86170</a>
                     </li>
                     <li><a href="">Email: sports@striking.lk</a>
                     </li>
@@ -859,168 +854,174 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="blog row">
-            <div class="lp">
-                <div class="blog-1 col-md-2">
-                    <span>Latest Posts</span>
-                    <h4>30</h4>
-                    <span>June 2017</span>
-                </div>
-                <div class="blog-2 col-md-8">
-                    <ul>
-                        <li>
-                            <a href="">
-                                <h4>Sri Lanka VS Zimbabwe</h4>
-                            </a>
-                        </li>
-                        <li>
-                            <p>Sri Lanka have named Upul Tharanga as captain of the ODI side for their tri-series in Zimbabwe, which includes West Indies, as regular captain Angelo Mathews and vice-captain Dinesh Chandimal are both absent through injury. Kusal Perera will fill the role of vice-captain, while veteran seamer Nuwan Kulasekara has been recalled to the 15-man squad.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="blog-3 col-md-2">
-                    <ul>
-                        <li><i class="fa fa-comment-o" aria-hidden="true"></i> Comments</li>
-                        <li><i class="fa fa-tag" aria-hidden="true"></i> Tag</li>
-                        <li><i class="fa fa-share-alt" aria-hidden="true"></i> Share This</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="ffoot">
-            <div class="lp">
-                <div class="row">
-                    <div class="col-md-12 foot1">
-                        <a href=""><img src="./images/cricket-logo.png" alt="">
-                        </a>
-                        <ul>
-                            <li><span>10,231,124</span> Community Members</li>
-                            <li><span>512</span> Sports Events</li>
-                            <li><span>10,231,124</span> Community Members</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row foot2">
-                    <div class="col-md-3">
-                        <div class="foot2-1 foot-com">
-                            <h4>SL: ADDRESS &amp; CONTACT</h4>
-                            <p>123, Galle Road, Moratuwa, Sri Lanka.</p>
-                        </div>
-                        <div class="foot2-2 foot-soc foot-com">
-                            <h4>Follow Us Now</h4>
-                            <p>Click your favorite link below</p>
-                            <ul>
-                                <li><a href=""><i class="fa fa-facebook fb1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-google-plus gp1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-twitter tw1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-youtube gp1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
-                                </li>
-                            </ul>
-                            <span class="foot-ph">Phone: +00 0000 0000</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="foot2-1 foot-com">
-                            <h4>UAE: ADDRESS &amp; CONTACT</h4>
-                            <p>No 3241, Grandiz, Desay City</p>
-                        </div>
-                        <div class="foot2-2 foot-soc foot-com">
-                            <h4>Follow Us Now</h4>
-                            <p>Click your favorite link below</p>
-                            <ul>
-                                <li><a href=""><i class="fa fa-facebook fb1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-google-plus gp1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-twitter tw1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-youtube gp1"></i></a>
-                                </li>
-                                <li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
-                                </li>
-                            </ul>
-                            <span class="foot-ph">Phone: +71 8596 4152</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="foot2-32 foot-pop foot-com">
-                            <h4>POPULAR Sports Events</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor</p>
-                            <ul>
-                                <li>
-                                    <img src="./images/2.jpeg" alt="">
-                                    <div class="foot-pop-eve">
-                                        <span>cricket</span>
-                                        <h4>Football:THIS SATURDAY STARTS THE INTENSIVE TRAINING FOR THE FINAL</h4>
-                                        <p>AUGUST 23RD, 2017</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="./images/5.jpg" alt="">
-                                    <div class="foot-pop-eve">
-                                        <span>Cricket</span>
-                                        <h4>Cricket:JAKE DRIBBLER ANNOUNCED THAT HE IS RETIRING NEXT MNONTH</h4>
-                                        <p>AUGUST 23RD, 2017</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="./images/6.jpeg" alt="">
-                                    <div class="foot-pop-eve">
-                                        <span>BASKETBALL</span>
-                                        <h4>BASKETBALL:THE ALCHEMISTS NEWS COACH IS BRINGIN A NEW SHOOTING GUARD</h4>
-                                        <p>AUGUST 23RD, 2017</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 foot4">
-                        <h5>Our Sponsors</h5>
-                        <ul>
-                            <li>
-                                <a href=""><img src="./images/1.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/2.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/3.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/4.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/5.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/6.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""><img src="./images/2.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php
+	$getPost = "SELECT * FROM blog_post WHERE category_id='1' AND created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
+	$rGetPost = mysqli_query($con, $getPost);
+	if(mysqli_num_rows($rGetPost)!=0){
+		while($rowGetPost = mysqli_fetch_array($rGetPost)){
+			$date = $rowGetPost['created_date_time'];
+			$id = $rowGetPost['post_id'];
+			$title = $rowGetPost['title'];
+			$description = $rowGetPost['description'];
+			$image = $rowGetPost['image'];
+			$views = $rowGetPost['views'];
+		}
+	}
+	?>
+	<section>
+		<div class="blog row">
+			<div class="lp">
+				<div class="blog-1 col-md-2">
+					<span>Latest Posts</span>
+					<h4><?php echo date_format(date_create($date),"d"); ?></h4>
+					<span><?php echo date_format(date_create($date),"M Y"); ?></span>
+				</div>
+				<div class="blog-2 col-md-8">
+					<ul>
+						<li>
+							<a href="./src/view.php?id=<?php echo $id; ?>">
+								<h4><?php echo $title; ?></h4>
+							</a>
+						</li>
+						<li>
+							<p><?php echo $description; ?></p>
+						</li>
+					</ul>
+				</div>
+				<div class="blog-3 col-md-2">
+					<ul>
+						<a href="./src/view.php?id=<?php echo $id; ?>"><li><i class="fa fa-comment-o" aria-hidden="true"></i> Comments</li></a>
+						<a href="./src/view.php?id=<?php echo $id; ?>"><li><i class="fa fa-tag" aria-hidden="true"></i> Tag</li></a>
+						<a href="./src/view.php?id=<?php echo $id; ?>"><li><i class="fa fa-share-alt" aria-hidden="true"></i> Share This</li></a>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+    <?php
+	$getMem = "SELECT count(*) as members FROM users";
+	$rGetMem = mysqli_query($con, $getMem);
+	if(mysqli_num_rows($rGetMem)!=0){
+		while($rowGetMem = mysqli_fetch_array($rGetMem)){
+			$members = $rowGetMem['members'];
+		}
+	}
+	$getPosts = "SELECT count(*) as posts FROM blog_post WHERE category_id='1'";
+	$rGetPosts = mysqli_query($con, $getPosts);
+	if(mysqli_num_rows($rGetPosts)!=0){
+		while($rowGetPosts = mysqli_fetch_array($rGetPosts)){
+			$Posts = $rowGetPosts['posts'];
+		}
+	}
+	?>
+	<section>
+		<div class="ffoot">
+			<div class="lp">
+				<div class="row">
+					<div class="col-md-12 foot1">
+						<a href=""><img src="./images/cricket-logo.png" alt="">
+						</a>
+						<ul>
+							<li><span><?php echo $members; ?></span> Community Members</li>
+							<li><span>512</span> Sports Events</li>
+							<li><span><?php echo $Posts; ?></span> Blog Posts</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row foot2">
+					<div class="col-md-3">
+						<div class="foot2-1 foot-com">
+							<h4>HQ : ADDRESS &amp; CONTACT</h4>
+							<p>No : 18/1, Nagaha Road. Rukmale, Pannipitiya, Sri Lanka</p>
+						</div>
+						<div class="foot2-2 foot-soc foot-com">
+							<h4>Follow Us Now</h4>
+							<p>Click your favorite link below</p>
+							<ul>
+								<li><a href=""><i class="fa fa-facebook fb1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-google-plus gp1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-twitter tw1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+								</li>
+							</ul>
+							<span class="foot-ph">Phone: +94 7795 86170</span>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="foot2-1 foot-com">
+							<h4>SITE : ADDRESS &amp; CONTACT</h4>
+							<p>No 3241, Grandiz, Desay City</p>
+						</div>
+						<div class="foot2-2 foot-soc foot-com">
+							<h4>Follow Us Now</h4>
+							<p>Click your favorite link below</p>
+							<ul>
+								<li><a href=""><i class="fa fa-facebook fb1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-google-plus gp1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-twitter tw1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
+								</li>
+								<li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+								</li>
+							</ul>
+							<span class="foot-ph">Phone: +71 8596 4152</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="foot2-32 foot-pop foot-com">
+							<h4>POPULAR Sports Events</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor</p>
+							<ul>
+								<li>
+									<img src="./images/2.jpeg" alt="">
+									<div class="foot-pop-eve">
+										<span>cricket</span>
+										<h4>Football:THIS SATURDAY STARTS THE INTENSIVE TRAINING FOR THE FINAL</h4>
+										<p>AUGUST 23RD, 2017</p>
+									</div>
+								</li>
+								<li>
+									<img src="./images/5.jpg" alt="">
+									<div class="foot-pop-eve">
+										<span>Cricket</span>
+										<h4>Cricket:JAKE DRIBBLER ANNOUNCED THAT HE IS RETIRING NEXT MNONTH</h4>
+										<p>AUGUST 23RD, 2017</p>
+									</div>
+								</li>
+								<li>
+									<img src="./images/6.jpeg" alt="">
+									<div class="foot-pop-eve">
+										<span>BASKETBALL</span>
+										<h4>BASKETBALL:THE ALCHEMISTS NEWS COACH IS BRINGIN A NEW SHOOTING GUARD</h4>
+										<p>AUGUST 23RD, 2017</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 foot4">
+						<h5>Our Partners</h5>
+						<ul>
+							<li>
+								<a href="http://striking.lk/" target="_blank"><img src="./images/strikingLogo.jpg" class="img img-responsive" style="width:90px;height:110px;" alt="">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
     <section>
         <div class="fcopy">
             <div class="lp copy-ri row">

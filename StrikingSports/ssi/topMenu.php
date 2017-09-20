@@ -2,7 +2,7 @@
     <div class="i-head row">
         <div class="i-head-left i-head-com col-md-6">
             <ul>
-                <li><a href="">phone: +00 0000 0000</a>
+                <li><a href="">phone: +94 7795 86170</a>
                 </li>
                 <li><a href="">Email: sports@striking.lk</a>
                 </li>

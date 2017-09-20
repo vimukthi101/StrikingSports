@@ -7,6 +7,7 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 	include_once('../ssi/header.php');
+	include_once('../ssi/db.php');
 ?>
 
 <body style="overflow:visible;">
@@ -22,240 +23,65 @@ if(!isset($_SESSION[''])){
         <div class="lp spe-bot-red-3">
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> cricket <span>events and news</span></h2>
-                <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates</p>
+                <p>Actually nobody can be perfect in cricket. Everybody makes mistakes. It is important to learn from your mistakes and correct them - <span>Kumar Sangakkara</span></p>
             </div>
-                <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/1.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Kick Off: What you need to know today</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/11.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>With other forwards on the shelf, US turns to Jozy</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/9.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>USL starts Saturday! See the full list of MLS ties</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/4.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>CanMNT's fringe, new players make cases</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/5(1).jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Galaxy to host Men United this summer</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/6.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Magie Martinez: ATL star wins Goal of the Week</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/7.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Catch up on what you missed in Week 3</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend pad-red-bot-0">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/8.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Orlando stay perfect, how high did they climb?</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/2.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Kick Off: What you need to know today</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/3.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>With other forwards on the shelf, US turns to Jozy</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/10.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>USL starts Saturday! See the full list of MLS ties</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/4.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>CanMNT's fringe, new players make cases</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/5(1).jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Galaxy to host Men United this summer</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/6.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Magie Martinez: ATL star wins Goal of the Week</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/7.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Catch up on what you missed in Week 3</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend pad-red-bot-0">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="../images/8.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Orlando stay perfect, how high did they climb?</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>				
+                <?php
+				$getPost = "SELECT * FROM blog_post WHERE category_id='1' ORDER BY created_date_time";
+				$rGetPost = mysqli_query($con, $getPost);
+				if(mysqli_num_rows($rGetPost)!=0){
+					while($rowGetPost = mysqli_fetch_array($rGetPost)){
+						$date = $rowGetPost['created_date_time'];
+						$id = $rowGetPost['post_id'];
+						$title = $rowGetPost['title'];
+						$description = $rowGetPost['description'];
+						$image = $rowGetPost['image'];
+						$views = $rowGetPost['views'];
+						$getLike = "SELECT COUNT(STATUS) AS likes FROM likes WHERE blog_post_id='".$id."' AND STATUS='0'";
+						$resultLike = mysqli_query($con, $getLike);
+						if(mysqli_num_rows($resultLike)!=0){
+							while($rowLike = mysqli_fetch_array($resultLike)){
+								$likes = $rowLike['likes'];
+							}
+						}
+						$getUnLike = "SELECT COUNT(STATUS) AS unlikes FROM likes WHERE blog_post_id='".$id."' AND STATUS='1'";
+						$resultUnLike = mysqli_query($con, $getUnLike);
+						if(mysqli_num_rows($resultUnLike)!=0){
+							while($rowUnLike = mysqli_fetch_array($resultUnLike)){
+								$unLikes = $rowUnLike['unlikes'];
+							}
+						}
+						$getComments = "SELECT COUNT(*) as comments FROM comments WHERE blog_post_post_id='".$id."'";
+						$resultComments = mysqli_query($con, $getComments);
+						if(mysqli_num_rows($resultComments)!=0){
+							while($rowComments = mysqli_fetch_array($resultComments)){
+								$comments = $rowComments['comments'];
+							}
+						}
+						echo '<div class="p-join-club">
+							<div class="col-md-3">
+								<div class="hom-trend">
+									<div class="hom-trend-img">
+										<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:200px;"></img>
+									</div>
+									<div class="hom-trend-con">
+										<span><i class="fa fa-calendar" aria-hidden="true"></i> '.$date.'</span>
+										<span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> '.$likes.'</span>
+										<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> '.$unLikes.'</span>
+										<span><i class="fa fa-comment-o" aria-hidden="true"></i> '.$comments.'</span>
+										<span><i class="fa fa-eye" aria-hidden="true"></i> '.$views.'</span>
+										<a href="view.php?id='.$id.'">
+											<h4>'.$title.'</h4>
+										</a>
+										<p>'.$description.'</p>
+									</div>
+								</div>
+							</div>
+						</div>';
+					}
+				} else {
+					echo '<h2 class="text-center">No Blog Posts To Show</h2>';	
+				}
+				?>		
         </div>
     </section>
     <?php

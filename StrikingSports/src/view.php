@@ -16,8 +16,8 @@ include_once('../ssi/db.php');
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
     <?php
-		include_once('../ssi/sideMenuStaff.php');
-		include_once('../ssi/topMenuStaff.php');
+		include_once('../ssi/sideMenu.php');
+		include_once('../ssi/topMenu.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
@@ -151,19 +151,23 @@ include_once('../ssi/db.php');
 							</div>';
 					}
 				}
-				echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
-					<div class="p-mf">
-					<form role="form" class="form-group" action="controller/commentController.php" method="post">
-						<div style="padding:10px;">
-							<textarea id="comment" name="comment" class="form-control" required></textarea>
-							<input type="text" name="post" id="post" hidden="" value="'.$id.'">
+				if(isset($_SESSION['email'])){
+					echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
+						<div class="p-mf">
+						<form role="form" class="form-group" action="controller/commentController.php" method="post">
+							<div style="padding:10px;">
+								<textarea id="comment" name="comment" class="form-control" required></textarea>
+								<input type="text" name="post" id="post" hidden="" value="'.$id.'">
+							</div>
+							<div class="col-md-2 pull-right" style="padding:10px;">
+								<input type="submit" id="submit" name="submit" value="Post Comment" class="form-control btn btn-success">
+							</div>
+						</form>
 						</div>
-						<div class="col-md-2 pull-right" style="padding:10px;">
-							<input type="submit" id="submit" name="submit" value="Post Comment" class="form-control btn btn-success">
-						</div>
-					</form>
-					</div>
-				 </div>';
+					 </div>';	
+				} else {
+					echo '<h4 class="text-center">Please login to add a comment</h4>';
+				}
 		} else {
 			echo '<div class="lp spe-bot-red-3 text-center" style="height:400px;">
             <div class="inn-title">
@@ -174,6 +178,8 @@ include_once('../ssi/db.php');
 	?>
     </section>
     <?php
+		include_once('../ssi/latestPost.php');
+		include_once('../ssi/footer.php');
 		include_once('../ssi/copyRights.php');
 	?>
     <script type="text/javascript" src="../js/jquery.min.js"></script>

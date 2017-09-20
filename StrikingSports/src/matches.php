@@ -22,7 +22,7 @@ include_once('../ssi/header.php');
         <div class="lp">
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> match fixings <span> 2017</span></h2>
-                <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates</p>
+                <p>There are no fears out there. There is nothing we cannot handle. It is just how we prepare ourselves mentaly and physically - <span>Mahela Jayawardene</span></p>
             </div>
             <div class="p-mf">
                 <ul>

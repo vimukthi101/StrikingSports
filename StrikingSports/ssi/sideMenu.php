@@ -20,12 +20,6 @@
                 <a href="squads.php"><img src="../images/f7.png" alt=""> Squad</a>
             </li>
             <li>
-                <a href="liveMatch.php"><img src="../images/c4.png" alt=""> Live match</a>
-            </li>					
-            <li>
-                <a href="join.php"><img src="../images/cy5.png" alt=""> Join Club</a>
-            </li>
-            <li>
                 <a href="about.php"><img src="../images/about.png" alt=""> About</a>
             </li>
             <li>
