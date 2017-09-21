@@ -19,6 +19,12 @@
             <li>
                 <a href="../src/viewPost.php"><img src="../images/c2.png" alt=""> View Posts</a>
             </li>
+            <li>
+                <a href="../src/addEvents.php"><img src="../images/c3.png" alt=""> Add Events</a>
+            </li>
+            <li>
+                <a href="../src/viewEvents.php"><img src="../images/f6.png" alt=""> View Events</a>
+            </li>
         </ul>
     </div>
     <div class="mob-menu">

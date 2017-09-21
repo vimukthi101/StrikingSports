@@ -1,4 +1,5 @@
 <?php
+include_once('../ssi/db.php');
 $getPost = "SELECT * FROM blog_post WHERE category_id='1' AND created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
 $rGetPost = mysqli_query($con, $getPost);
 if(mysqli_num_rows($rGetPost)!=0){

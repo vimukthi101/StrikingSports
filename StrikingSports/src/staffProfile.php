@@ -23,6 +23,7 @@ include_once('../ssi/db.php');
 				$eNameId = $rowGetUser['name_name_id'];
 				$eAddressId = $rowGetUser['address_address_id'];
 				$position = $rowGetUser['position'];
+				$ePosition = $position;
 				if($position == "0"){
 					$position = "System Admin";
 				} else if($position == "1"){

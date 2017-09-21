@@ -1,4 +1,5 @@
 <?php
+include_once('../ssi/db.php');
 $getMem = "SELECT count(*) as members FROM users";
 $rGetMem = mysqli_query($con, $getMem);
 if(mysqli_num_rows($rGetMem)!=0){
@@ -78,7 +79,7 @@ if(mysqli_num_rows($rGetPosts)!=0){
                 <div class="col-md-6">
                     <div class="foot2-32 foot-pop foot-com">
                         <h4>POPULAR Sports Events</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor</p>
+                        <p>Check the recent cricket events calendar</p>
                         <ul>
                             <li>
                                 <img src="../images/2.jpeg" alt="">

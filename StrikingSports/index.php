@@ -978,7 +978,7 @@
 					<div class="col-md-6">
 						<div class="foot2-32 foot-pop foot-com">
 							<h4>POPULAR Sports Events</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor</p>
+							<p>Check the recent cricket events calendar</p>
 							<ul>
 								<li>
 									<img src="./images/2.jpeg" alt="">

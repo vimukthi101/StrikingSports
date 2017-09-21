@@ -12,6 +12,61 @@ include_once('../ssi/db.php');
 ?>
 
 <body style="overflow: visible;">
+	<?php
+		$email = $_SESSION['email'];
+		//get user info
+		$getUser = "SELECT * FROM staff WHERE email='".$email."'";
+		$resultGetUser = mysqli_query($con, $getUser) or die();
+		if(mysqli_num_rows($resultGetUser) != 0){
+			while($rowGetUser = mysqli_fetch_array($resultGetUser)){
+				$eContact = $rowGetUser['contact_no'];
+				$eNameId = $rowGetUser['name_name_id'];
+				$position = $rowGetUser['position'];
+				$ePosition = $position;
+				if($position == "0"){
+					$position = "System Admin";
+				} else if($position == "1"){
+					$position = "Editor";
+				} else if($position == "2"){
+					$position = "Approver";
+				}
+				$eAddressId = $rowGetUser['address_address_id'];
+				$regDateTime = $rowGetUser['registered_date_time'];
+				//get user name
+				$getName = "SELECT * FROM NAME WHERE name_id='".$eNameId."'";
+				$resultGetName = mysqli_query($con, $getName) or die();
+				if(mysqli_num_rows($resultGetName) != 0){
+					while($rowGetName = mysqli_fetch_array($resultGetName)){
+						$eFName = $rowGetName['first_name'];
+						$eSName = $rowGetName['second_name'];
+						$eLName = $rowGetName['last_name'];
+					}
+				} else {
+					//redirect to login
+					session_unset();
+					header('staffLogin.php?error=np');
+				}
+				//get address
+				$getAddress = "SELECT * FROM address WHERE address_id='".$eAddressId."'";
+				$resultGetAddress = mysqli_query($con, $getAddress) or die();
+				if(mysqli_num_rows($resultGetAddress) != 0){
+					while($rowGetAddress = mysqli_fetch_array($resultGetAddress)){
+						$eAno = $rowGetAddress['address_no'];
+						$eALane = $rowGetAddress['address_lane'];
+						$eACity = $rowGetAddress['address_city'];
+					}
+				} else {
+					//redirect to login
+					session_unset();
+					header('staffLogin.php?error=np');
+				}
+			}
+		} else {
+			//redirect to login
+			session_unset();
+			header('staffLogin.php?error=np');
+		}
+	?>
     <div id="preloader" style="display: none;">
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
@@ -34,60 +89,6 @@ include_once('../ssi/db.php');
             </font>
         </div>
         <div class="p-mf">
-		<?php
-			$email = $_SESSION['email'];
-			//get user info
-			$getUser = "SELECT * FROM staff WHERE email='".$email."'";
-			$resultGetUser = mysqli_query($con, $getUser) or die();
-			if(mysqli_num_rows($resultGetUser) != 0){
-				while($rowGetUser = mysqli_fetch_array($resultGetUser)){
-					$eContact = $rowGetUser['contact_no'];
-					$eNameId = $rowGetUser['name_name_id'];
-					$position = $rowGetUser['position'];
-					if($position == "0"){
-						$position = "System Admin";
-					} else if($position == "1"){
-						$position = "Editor";
-					} else if($position == "2"){
-						$position = "Approver";
-					}
-					$eAddressId = $rowGetUser['address_address_id'];
-					$regDateTime = $rowGetUser['registered_date_time'];
-					//get user name
-					$getName = "SELECT * FROM NAME WHERE name_id='".$eNameId."'";
-					$resultGetName = mysqli_query($con, $getName) or die();
-					if(mysqli_num_rows($resultGetName) != 0){
-						while($rowGetName = mysqli_fetch_array($resultGetName)){
-							$eFName = $rowGetName['first_name'];
-							$eSName = $rowGetName['second_name'];
-							$eLName = $rowGetName['last_name'];
-						}
-					} else {
-						//redirect to login
-						session_unset();
-						header('staffLogin.php?error=np');
-					}
-					//get address
-					$getAddress = "SELECT * FROM address WHERE address_id='".$eAddressId."'";
-					$resultGetAddress = mysqli_query($con, $getAddress) or die();
-					if(mysqli_num_rows($resultGetAddress) != 0){
-						while($rowGetAddress = mysqli_fetch_array($resultGetAddress)){
-							$eAno = $rowGetAddress['address_no'];
-							$eALane = $rowGetAddress['address_lane'];
-							$eACity = $rowGetAddress['address_city'];
-						}
-					} else {
-						//redirect to login
-						session_unset();
-						header('staffLogin.php?error=np');
-					}
-				}
-			} else {
-				//redirect to login
-				session_unset();
-				header('staffLogin.php?error=np');
-			}
-		?>
         <div style="padding:10px;"> 
         	<?php
 				if(isset($_GET['error'])){
