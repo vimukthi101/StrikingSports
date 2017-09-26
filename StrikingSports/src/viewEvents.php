@@ -29,7 +29,7 @@ include_once('../ssi/db.php');
 				$error = $_GET['error'];
 				if($error == 'su'){
 					echo '<div style="padding:3px;">
-							<label class="form-control">Event delete successfully.</label>
+							<label class="form-control">Event deleted successfully.</label>
 						</div>';
 					}
 				}

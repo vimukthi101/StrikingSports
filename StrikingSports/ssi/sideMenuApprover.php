@@ -8,7 +8,10 @@
                 <a href="../src/staffPanel.php"><img src="../images/s1.png" alt=""> Home</a>
             </li>
             <li>
-                <a href="../src/approveReject.php"><img src="../images/c3.png" alt=""> Approve/ Reject</a>
+                <a href="../src/approveReject.php"><img src="../images/c3.png" alt=""> Approve/ Reject Posts</a>
+            </li>
+            <li>
+                <a href="../src/approveRejectEvents.php"><img src="../images/c3.png" alt=""> Approve/ Reject Events</a>
             </li>
         </ul>
     </div>

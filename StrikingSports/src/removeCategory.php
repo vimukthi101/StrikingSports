@@ -15,7 +15,7 @@ include_once('../ssi/db.php');
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
     <?php
-		include_once('../ssi/sideMenuStaff.php');
+		include_once('../ssi/sideMenuAdmin.php');
 		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>

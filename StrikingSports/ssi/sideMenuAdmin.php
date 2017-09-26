@@ -13,6 +13,12 @@
             <li>
                 <a href="../src/viewUsers.php"><img src="../images/c6.png" alt=""> View Users</a>
             </li>
+            <li>
+                <a href="../src/addCategory.php"><img src="../images/c3.png" alt=""> Add Category</a>
+            </li>
+            <li>
+                <a href="../src/removeCategory.php"><img src="../images/c6.png" alt=""> Remove Category</a>
+            </li>
         </ul>
     </div>
     <div class="mob-menu">

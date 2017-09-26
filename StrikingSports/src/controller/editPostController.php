@@ -60,7 +60,7 @@ $mail->Body = "Dear ".$position.",
 
 Blog Post has been edited by ".$email." for Approval on ".$time.". Please check the content and Approve it.
 
-Blog Post : www.sports.striking.lk/src/post.php?id=14".$postId."
+Blog Post : www.sports.striking.lk/src/post.php?id=".$postId."
 
 Thank You!
 Striking Sports";

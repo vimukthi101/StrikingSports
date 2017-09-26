@@ -9,7 +9,6 @@ TO DO
 3) reply comment add
 4) add permission check to every page
 5) finish viewer user pages
-6) finish event edit and delete
 
 staff position
 ##############
