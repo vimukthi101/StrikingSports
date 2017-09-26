@@ -9,6 +9,7 @@ TO DO
 3) reply comment add
 4) add permission check to every page
 5) finish viewer user pages
+6) change left panel accroding to the permissions, dynamic events for normal users and etc
 
 staff position
 ##############
