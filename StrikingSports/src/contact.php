@@ -22,19 +22,19 @@ include_once('../ssi/header.php');
         <div class="lp spe-bot-red-3">
             <div>
                 <div class="inn-title">
-                    <h2>SL: Striking Sports  <span> Club</span></h2>
-                    <p>123, Galle Road, Moratuwa, Sri Lanka.</p>
-					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +00 0000 0000</span>
-					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: contact@striking.lk</span>
+                    <h2>AD : Striking Sports  <span> Club</span></h2>
+                    <p>No : 18/1, Nagaha Road. Rukmale, Pannipitiya, Sri Lanka</p>
+					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +94 7795 86170</span>
+					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: sports@striking.lk</span>
                 </div>
                 <div class="inn-title">
-                    <h2>UAE: Striking Sports  <span> Club</span></h2>
-                    <p>28800 Orchard Lake Road, Suite 180 Farmington Hills</p>
-					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +00 0000 0000</span>
-					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: contact@striking.lk</span>
+                    <h2>SITE : Striking Sports  <span> Club</span></h2>
+                    <p>No : 231, Ihala Imbulgoda, Imbulgoda, Gampaha, Sri Lanka</p>
+					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +94 7129 22461</span>
+					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: sports@striking.lk</span>
                     <div class="share-btn">
                         <ul>
-                            <li><a href=""><i class="fa fa-facebook fb1"></i> Follow On Facebook</a>
+                            <li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i> Follow On Facebook</a>
                             </li>
                             <li><a href=""><i class="fa fa-twitter tw1"></i> Follow On Twitter</a>
                             </li>
@@ -42,10 +42,6 @@ include_once('../ssi/header.php');
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="inn-all-com con-map">
-                    <h4>Find Our Location</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
                 </div>
             </div>
         </div>

@@ -24,11 +24,11 @@ include_once('../ssi/db.php');
             <div>
                 <div class="events ev-po-1 ev-po-com">
                     <div class="ev-po-title">
-                        <h3>Upcoming Cricket Events</h3>
+                        <h3>Upcoming Sports Events</h3>
                         <p>&nbsp;</p>
                     </div>
                    <?php
-				   $events = "SELECT * FROM EVENTS WHERE STATUS='2' AND event_category IN (SELECT category_id FROM category WHERE category='cricket')";
+				   $events = "SELECT * FROM EVENTS WHERE STATUS='2'";
 				   $result = mysqli_query($con, $events);
 				   if(mysqli_num_rows($result)){
 					   while($row = mysqli_fetch_array($result)){

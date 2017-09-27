@@ -24,7 +24,7 @@
                         <li>
                             <h4>Follow Us : </h4>
                         </li>
-                        <li><a href=""><i class="fa fa-facebook fb1"></i></a>
+                        <li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i></a>
                         </li>
                         <li><a href=""><i class="fa fa-google-plus gp1"></i></a>
                         </li>
@@ -32,7 +32,7 @@
                         </li>
                         <li><a href=""><i class="fa fa-youtube gp1"></i></a>
                         </li>
-                        <li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+                        <li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
                         </li>
                     </ul>
                 </div>

@@ -8,8 +8,8 @@ TO DO
 2) add a new table as user_lockout, add blocke users to table with unblock time, check the table in each login for records for particular user. change the error message on blocked users
 3) reply comment add
 4) add permission check to every page
-5) finish viewer user pages
-6) change left panel accroding to the permissions, dynamic events for normal users and etc
+5) change left panel accroding to the permissions, dynamic events for normal users and etc
+6) complete index page, add youtube, twitter and other links
 
 staff position
 ##############

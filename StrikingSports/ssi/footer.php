@@ -7,7 +7,7 @@ if(mysqli_num_rows($rGetMem)!=0){
 		$members = $rowGetMem['members'];
 	}
 }
-$getPosts = "SELECT count(*) as posts FROM blog_post WHERE category_id='1'";
+$getPosts = "SELECT count(*) as posts FROM blog_post";
 $rGetPosts = mysqli_query($con, $getPosts);
 if(mysqli_num_rows($rGetPosts)!=0){
 	while($rowGetPosts = mysqli_fetch_array($rGetPosts)){
@@ -32,14 +32,14 @@ if(mysqli_num_rows($rGetPosts)!=0){
             <div class="row foot2">
                 <div class="col-md-3">
                     <div class="foot2-1 foot-com">
-                        <h4>HQ : ADDRESS &amp; CONTACT</h4>
+                        <h4>AD : ADDRESS &amp; CONTACT</h4>
                         <p>No : 18/1, Nagaha Road. Rukmale, Pannipitiya, Sri Lanka</p>
                     </div>
                     <div class="foot2-2 foot-soc foot-com">
                         <h4>Follow Us Now</h4>
                         <p>Click your favorite link below</p>
                         <ul>
-                            <li><a href=""><i class="fa fa-facebook fb1"></i></a>
+                            <li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i></a>
                             </li>
                             <li><a href=""><i class="fa fa-google-plus gp1"></i></a>
                             </li>
@@ -47,7 +47,7 @@ if(mysqli_num_rows($rGetPosts)!=0){
                             </li>
                             <li><a href=""><i class="fa fa-youtube gp1"></i></a>
                             </li>
-                            <li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+                            <li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
                             </li>
                         </ul>
                         <span class="foot-ph">Phone: +94 7795 86170</span>
@@ -56,13 +56,13 @@ if(mysqli_num_rows($rGetPosts)!=0){
                 <div class="col-md-3">
                     <div class="foot2-1 foot-com">
                         <h4>SITE : ADDRESS &amp; CONTACT</h4>
-                        <p>No 3241, Grandiz, Desay City</p>
+                        <p>No : 231, Ihala Imbulgoda, Imbulgoda, Gampaha, Sri Lanka</p>
                     </div>
                     <div class="foot2-2 foot-soc foot-com">
                         <h4>Follow Us Now</h4>
                         <p>Click your favorite link below</p>
                         <ul>
-                            <li><a href=""><i class="fa fa-facebook fb1"></i></a>
+                            <li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i></a>
                             </li>
                             <li><a href=""><i class="fa fa-google-plus gp1"></i></a>
                             </li>
@@ -70,41 +70,38 @@ if(mysqli_num_rows($rGetPosts)!=0){
                             </li>
                             <li><a href=""><i class="fa fa-youtube gp1"></i></a>
                             </li>
-                            <li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+                            <li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
                             </li>
                         </ul>
-                        <span class="foot-ph">Phone: +71 8596 4152</span>
+                        <span class="foot-ph">Phone: +94 7129 22461</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="foot2-32 foot-pop foot-com">
                         <h4>POPULAR Sports Events</h4>
-                        <p>Check the recent cricket events calendar</p>
+                        <p>Check the recent sports events</p>
                         <ul>
-                            <li>
-                                <img src="../images/2.jpeg" alt="">
-                                <div class="foot-pop-eve">
-                                    <span>cricket</span>
-                                    <h4>Football:THIS SATURDAY STARTS THE INTENSIVE TRAINING FOR THE FINAL</h4>
-                                    <p>AUGUST 23RD, 2017</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/5.jpg" alt="">
-                                <div class="foot-pop-eve">
-                                    <span>Cricket</span>
-                                    <h4>Cricket:JAKE DRIBBLER ANNOUNCED THAT HE IS RETIRING NEXT MNONTH</h4>
-                                    <p>AUGUST 23RD, 2017</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/6.jpeg" alt="">
-                                <div class="foot-pop-eve">
-                                    <span>BASKETBALL</span>
-                                    <h4>BASKETBALL:THE ALCHEMISTS NEWS COACH IS BRINGIN A NEW SHOOTING GUARD</h4>
-                                    <p>AUGUST 23RD, 2017</p>
-                                </div>
-                            </li>
+                        <?php
+						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 3";
+						   $sResult = mysqli_query($con, $sEvents);
+						   if(mysqli_num_rows($sResult)){
+							   while($sRow = mysqli_fetch_array($sResult)){
+								   $splace = $sRow['place'];
+								   $seventDate = $sRow['event_date'];
+								   $seventId = $sRow['event_id'];
+								   $sname = $sRow['event_name'];
+								   $simage = $sRow['event_image'];
+								   echo '<a href="eventDynamic.php?id='.$eventId.'"><li>
+										<img src="data:image/jpeg;base64,'.base64_encode($simage).'" class="img img-responsive" style="height:90px;width:120px;"></img>
+										<div class="foot-pop-eve">
+											<span>'.$sname.'</span>
+											<h4>'.$splace.'</h4>
+											<p>'.$seventDate.'</p>
+										</div>
+									</li></a>';
+							   }
+						   }
+					   ?>
                         </ul>
                     </div>
                 </div>

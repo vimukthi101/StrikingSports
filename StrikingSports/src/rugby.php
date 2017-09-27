@@ -22,11 +22,11 @@ if(!isset($_SESSION[''])){
     <section>
         <div class="lp spe-bot-red-3">
             <div class="inn-title">
-                <h2><i class="fa fa-check" aria-hidden="true"></i> cricket <span>events and news</span></h2>
-                <p>Actually nobody can be perfect in cricket. Everybody makes mistakes. It is important to learn from your mistakes and correct them - <span>Kumar Sangakkara</span></p>
+                <h2><i class="fa fa-check" aria-hidden="true"></i> rugby <span>events and news</span></h2>
+                <p>I prefer rugby to soccer. I enjoy the violence in rugby, except when they start biting each other’s ears off – Elizabeth Taylor</span></p>
             </div>
                 <?php
-				$getPost = "SELECT * FROM blog_post WHERE category_id IN (select category_id from category where category='cricket') ORDER BY created_date_time";
+				$getPost = "SELECT * FROM blog_post WHERE category_id IN (select category_id from category where category='rugby') ORDER BY created_date_time";
 				$rGetPost = mysqli_query($con, $getPost);
 				if(mysqli_num_rows($rGetPost)!=0){
 					while($rowGetPost = mysqli_fetch_array($rGetPost)){

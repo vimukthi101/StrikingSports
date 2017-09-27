@@ -22,7 +22,7 @@ include_once('../ssi/header.php');
         <div class="lp spe-bot-red-3">
             <div class="tr-pro">
                 <div class="inn-title">
-                    <h2><i class="fa fa-check" aria-hidden="true"></i> sports 2017 <span> about us</span></h2>
+                    <h2><i class="fa fa-check" aria-hidden="true"></i> striking sports <span> about us</span></h2>
                     <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates</p>
                 </div>
                 <div class="inn-all-com">

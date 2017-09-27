@@ -32,17 +32,17 @@
                     <a href="src/cricket.php"><img src="./images/c3.png" alt=""> cricket</a>
                 </li>
                 <li>
-                    <a href="src/matches.php"><img src="./images/c6.png" alt=""> Matchs</a>
+                    <a href="src/rugby.php"><img src="./images/c6.png" alt=""> Rugby</a>
+                </li>
+                <li>
+                    <a href="src/football.php"><img src="./images/c6.png" alt=""> Football</a>
+                </li>
+                <li>
+                    <a href="src/others.php"><img src="./images/c6.png" alt=""> Other Sports</a>
                 </li>
                 <li>
                     <a href="src/events.php"><img src="./images/f6.png" alt=""> Events</a>
-                </li>
-                <li>
-                    <a href="src/rankings.php"><img src="./images/c2.png" alt=""> Ranking</a>
-                </li>
-                <li>
-                    <a href="src/squads.php"><img src="./images/f7.png" alt=""> Squad</a>
-                </li>		
+                </li>	
                 <li>
                     <a href="src/about.php"><img src="./images/about.png" alt=""> About</a>
                 </li>
@@ -99,109 +99,7 @@
                     <?php
 					}
 					?>
-                    <li>
-                        <a href="" class="tr-menu">
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i> Browse
-                        </a>
-                    </li>
-                </ul>
-                        <div class="cat-menu">
-                            <div class="col-md-3 col-sm-6 cm1 mob-hid">
-                                <h4>Top Trendings This month</h4>
-                                <ul>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> cricket Training For Beginners</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Champions Trophy 2017</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Join Our Club &amp; Donate</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Under 18 cricket Cup, Sri Lanks</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> cricket League - Register Now!</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> cricket - Club Matches</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> View All Events</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 cm1 mob-hid">
-                                <h4>Upcoming cricket Matches</h4>
-                                <ul>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> NCC vs SSC</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Moors vs Air Force</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Army vs Police</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> Bloomfield vs Moratuwa</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> NCC vs Southern</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> SSC vs Police</a>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i> View All Matches</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>2017 upcoming league matches</h4>
-                                <div class="foot-pop top-me-ev">
-                                    <ul>
-                                        <li>
-                                            <a href="">
-                                                <img src="./images/2.jpeg" alt="">
-                                                <div class="foot-pop-eve top-me-text">
-                                                    <span>Cricket: AUGUST 23RD, 2017</span>
-                                                    <h4>Football:THIS SATURDAY STARTS THE INTENSIVE TRAINING FOR THE FINAL</h4>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <img src="./images/5.jpg" alt="">
-                                                <div class="foot-pop-eve top-me-text">
-                                                    <span>Body Building: AUGUST 23RD, 2017</span>
-                                                    <h4>Body Building:ROSHAN MAHANAMA ANNOUNCED THAT HE IS RETIRING NEXT MNONTH</h4>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <img src="./images/6.jpeg" alt="">
-                                                <div class="foot-pop-eve top-me-text">
-                                                    <span>BASKETBALL: AUGUST 23RD, 2017</span>
-                                                    <h4>BASKETBALL: SOUHERN SHARKS NEWS COACH IS BRINGIN A NEW SHOOTING GUARD</h4>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="cbb2-home-nav-bot mob-hid">
-                                <ul>
-                                    <li>The Power of Refined Local Search, Now in Your Hands <span>Call us on: +00 0000 0000</span>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class="cbb2-ani-btn-join">
-                                            <i class="fa fa-user" aria-hidden="true"></i> Account
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="cbb2-ani-btn">
-                                            <i class="fa fa-life-buoy" aria-hidden="true"></i> Join Our Club
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="cbb2-ani-btn">
-                                            <i class="fa fa-dollar" aria-hidden="true"></i> Make Donation
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                </ul> 
             </div>
         </div>
     </section>
@@ -855,7 +753,7 @@
         </div>
     </section>
     <?php
-	$getPost = "SELECT * FROM blog_post WHERE category_id='1' AND created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
+	$getPost = "SELECT * FROM blog_post WHERE created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
 	$rGetPost = mysqli_query($con, $getPost);
 	if(mysqli_num_rows($rGetPost)!=0){
 		while($rowGetPost = mysqli_fetch_array($rGetPost)){
@@ -906,7 +804,7 @@
 			$members = $rowGetMem['members'];
 		}
 	}
-	$getPosts = "SELECT count(*) as posts FROM blog_post WHERE category_id='1'";
+	$getPosts = "SELECT count(*) as posts FROM blog_post";
 	$rGetPosts = mysqli_query($con, $getPosts);
 	if(mysqli_num_rows($rGetPosts)!=0){
 		while($rowGetPosts = mysqli_fetch_array($rGetPosts)){
@@ -931,14 +829,14 @@
 				<div class="row foot2">
 					<div class="col-md-3">
 						<div class="foot2-1 foot-com">
-							<h4>HQ : ADDRESS &amp; CONTACT</h4>
+							<h4>AD : ADDRESS &amp; CONTACT</h4>
 							<p>No : 18/1, Nagaha Road. Rukmale, Pannipitiya, Sri Lanka</p>
 						</div>
 						<div class="foot2-2 foot-soc foot-com">
 							<h4>Follow Us Now</h4>
 							<p>Click your favorite link below</p>
 							<ul>
-								<li><a href=""><i class="fa fa-facebook fb1"></i></a>
+								<li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i></a>
 								</li>
 								<li><a href=""><i class="fa fa-google-plus gp1"></i></a>
 								</li>
@@ -946,7 +844,7 @@
 								</li>
 								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
 								</li>
-								<li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+								<li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
 								</li>
 							</ul>
 							<span class="foot-ph">Phone: +94 7795 86170</span>
@@ -955,13 +853,13 @@
 					<div class="col-md-3">
 						<div class="foot2-1 foot-com">
 							<h4>SITE : ADDRESS &amp; CONTACT</h4>
-							<p>No 3241, Grandiz, Desay City</p>
+							<p>No : 231, Ihala Imbulgoda, Imbulgoda, Gampaha, Sri Lanka</p>
 						</div>
 						<div class="foot2-2 foot-soc foot-com">
 							<h4>Follow Us Now</h4>
 							<p>Click your favorite link below</p>
 							<ul>
-								<li><a href=""><i class="fa fa-facebook fb1"></i></a>
+								<li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i></a>
 								</li>
 								<li><a href=""><i class="fa fa-google-plus gp1"></i></a>
 								</li>
@@ -969,44 +867,41 @@
 								</li>
 								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
 								</li>
-								<li><a href=""><i class="fa fa-envelope-o sh1"></i></a>
+								<li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
 								</li>
 							</ul>
-							<span class="foot-ph">Phone: +71 8596 4152</span>
+							<span class="foot-ph">Phone: +94 7129 22461</span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="foot2-32 foot-pop foot-com">
-							<h4>POPULAR Sports Events</h4>
-							<p>Check the recent cricket events calendar</p>
-							<ul>
-								<li>
-									<img src="./images/2.jpeg" alt="">
-									<div class="foot-pop-eve">
-										<span>cricket</span>
-										<h4>Football:THIS SATURDAY STARTS THE INTENSIVE TRAINING FOR THE FINAL</h4>
-										<p>AUGUST 23RD, 2017</p>
-									</div>
-								</li>
-								<li>
-									<img src="./images/5.jpg" alt="">
-									<div class="foot-pop-eve">
-										<span>Cricket</span>
-										<h4>Cricket:JAKE DRIBBLER ANNOUNCED THAT HE IS RETIRING NEXT MNONTH</h4>
-										<p>AUGUST 23RD, 2017</p>
-									</div>
-								</li>
-								<li>
-									<img src="./images/6.jpeg" alt="">
-									<div class="foot-pop-eve">
-										<span>BASKETBALL</span>
-										<h4>BASKETBALL:THE ALCHEMISTS NEWS COACH IS BRINGIN A NEW SHOOTING GUARD</h4>
-										<p>AUGUST 23RD, 2017</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
+                    <div class="foot2-32 foot-pop foot-com">
+                        <h4>POPULAR Sports Events</h4>
+                        <p>Check the recent sports events</p>
+                        <ul>
+                        <?php
+						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 3";
+						   $sResult = mysqli_query($con, $sEvents);
+						   if(mysqli_num_rows($sResult)){
+							   while($sRow = mysqli_fetch_array($sResult)){
+								   $splace = $sRow['place'];
+								   $seventDate = $sRow['event_date'];
+								   $seventId = $sRow['event_id'];
+								   $sname = $sRow['event_name'];
+								   $simage = $sRow['event_image'];
+								   echo '<a href="eventDynamic.php?id='.$eventId.'"><li>
+										<img src="data:image/jpeg;base64,'.base64_encode($simage).'" class="img img-responsive" style="height:90px;width:120px;"></img>
+										<div class="foot-pop-eve">
+											<span>'.$sname.'</span>
+											<h4>'.$splace.'</h4>
+											<p>'.$seventDate.'</p>
+										</div>
+									</li></a>';
+							   }
+						   }
+					   ?>
+                        </ul>
+                    </div>
+                </div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 foot4">
