@@ -27,35 +27,38 @@ include_once('../ssi/db.php');
                         <h3>Upcoming Sports Events</h3>
                         <p>&nbsp;</p>
                     </div>
+                    <table class="myTable">
+                    <tbody>
                    <?php
-				   $events = "SELECT * FROM EVENTS WHERE STATUS='2'";
+				   $today = date("Y-m-d");
+				   $events = "SELECT * FROM EVENTS WHERE STATUS='2' AND event_date >= '".$today."' ORDER BY event_date";
 				   $result = mysqli_query($con, $events);
 				   if(mysqli_num_rows($result)){
+					   echo '<tr>
+                                <th>Event</th>
+                                <th class="e_h1">Place</th>
+                                <th>Information</th>
+                            </tr>';
 					   while($row = mysqli_fetch_array($result)){
 						   $place = $row['place'];
 						   $eventDate = $row['event_date'];
 						   $eventId = $row['event_id'];
 						   $name = $row['event_name'];
 						   $image = $row['event_image'];
-					   }
-				   }
-				   ?>
-                    <table class="myTable">
-                        <tbody>
-                            <tr>
-                                <th>Event</th>
-                                <th class="e_h1">Place</th>
-                                <th>Information</th>
-                            </tr>
-                            <tr>
-                                <td><img src="data:image/jpeg;base64,<?php echo base64_encode($image);?>" class="img img-responsive"></img>
+						   echo '<tr>
+                                <td><img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive"></img>
                                     <div class="h-tm-ra1">
-                                        <h4><?php echo $name; ?></h4><span><?php echo $eventDate; ?></span>
+                                        <h4>'.$name.'</h4><span>'.$eventDate.'</span>
                                     </div>
                                 </td>
-                                <td class="e_h1"><?php echo $place; ?></td>
-                                <td><a href="eventDynamic.php?id=<?php echo $eventId; ?>" class="link-btn">More Info</a></td>
-                            </tr>
+                                <td class="e_h1">'.$place.'</td>
+                                <td><a href="eventDynamic.php?id='.$eventId.'" class="link-btn">More Info</a></td>
+                            </tr>';
+					   }
+				   } else {
+						echo '<h2 class="text-center" style="padding-top:40px;padding-bottom:40px;">No Events To Display</h2>';   
+				   }
+				   ?>   
                         </tbody>
                     </table>
                 </div>

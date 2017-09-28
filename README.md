@@ -9,7 +9,7 @@ TO DO
 3) reply comment add
 4) add permission check to every page
 5) change left panel accroding to the permissions, dynamic events for normal users and etc
-6) complete index page, add youtube, twitter and other links
+7) serach bar
 
 staff position
 ##############

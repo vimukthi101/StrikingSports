@@ -107,35 +107,41 @@
         <div class="home">
             <div class="h_l">
                 <img src="./images/cricket-logo.png" alt="">
-                <h2>Current cricket Events</h2>
-                <p>Lorem ipsum dolor sit amet, cons ecte tuer adipiscing elit, sed diam non ummy nibh euismod tinc idunt ut laoreet dolore magna ali quam erat volutpat.</p>
-                <ul>
-                    <li><a href=""><span>1</span>World Twenty20, 2017</a>
-                    </li>
-                    <li><a href=""><span>2</span>Cricket Training for Kids</a>
-                    </li>
-                    <li><a href=""><span>3</span>Join Our Club &amp; Donate</a>
-                    </li>
-                    <li><a href=""><span>4</span>Cricket Training - Register Now!</a>
-                    </li>
-                    <li><a href=""><span>5</span>Selection for Under 18</a>
-                    </li>
-                </ul>
-                <a href="" class="aebtn">View All Events</a>
+                <h2>Current Sports Events</h2>
+                <p>You can't put a limit on anything. The more you dream, the farther you get - Michael Phelps</p>
+                <?php
+				$today = date("Y-m-d");
+				$getEvents = "SELECT * FROM EVENTS WHERE event_date >= '".$today."' ORDER BY event_date LIMIT 5";
+				$resultEvents = mysqli_query($con, $getEvents);
+				if(mysqli_num_rows($resultEvents)){
+					$counter = 1;
+					while($rowEvents = mysqli_fetch_array($resultEvents)){
+						$eventTitle = $rowEvents['event_name'];
+						$eventId = $rowEvents['event_id'];	
+						echo '<ul>
+								<li><a href="src/eventDynamic.php?id='.$eventId.'"><span>'.$counter.'</span>'.$eventTitle.'</a></li>
+							</ul>';
+						$counter++;
+					}
+					echo '<a href="src/events.php" class="aebtn">View All Events</a>';
+				} else {
+					echo '<ul>
+								<li><a><span>*</span>No Events To Display</a></li>
+							</ul>';
+				}
+				?>
             </div>
             <div class="h_r">
                 <div class="slideshow-container">
                     <div class="mySlides fade" style="display: block;">
                         <div class="numbertext">1 / 2</div>
-                        <a href=""><img src="./images/cricket1.jpg" alt="">
-                        </a>
-                        <div class="text">Caption Text 1</div>
+                        <img src="./images/cricket1.jpg" alt="">
+                        <div class="text">Striking Sports</div>
                     </div>
                     <div class="mySlides fade" style="display: none;">
                         <div class="numbertext">2 / 2</div>
-                        <a href=""><img src="./images/b6.jpg" alt="">
-                        </a>
-                        <div class="text">Caption Text 2</div>
+                        <img src="./images/b6.jpg" alt="">
+                        <div class="text">Striking Sports</div>
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
                     <a class="next" onclick="plusSlides(1)">❯</a>
@@ -165,90 +171,50 @@
         <div class="se lp">
             <div class="row">
                 <div class="spe-title-1">
-                    <h2>Upcoming <span>cricket SPOTLIGHT</span> in this month</h2>
+                    <h2>Upcoming <span>sports SPOTLIGHT</span> in this month</h2>
                     <div class="hom-tit">
                         <div class="hom-tit-1"></div>
                         <div class="hom-tit-2"></div>
                         <div class="hom-tit-3"></div>
                     </div>
-                    <p>Feel the thrill of seeing a global sporting event in one of the world's most incredible cities. Headlining the calendar is the Dubai World Cup</p>
+                    <p>Feel the thrill of seeing a global sporting event in one of the world's most incredible cities.</p>
                 </div>
                 <div class="event-left col-md-9">
                     <ul>
-                        <li>
-                            <div class="el-img">
-                                <img class="img-responsive" src="./images/1.jpg" alt="">
-                            </div>
-                            <div class="el-con">
-                                <span>Jun 05 - Aug 27</span>
-                                <h3>ICC Champions Trophy 2017, Australia</h3>
-                                <p>The indoor sports mania is back again offering all sorts of indoor sports in the summer.</p>
-                                <a href="">More Information</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="el-img">
-                            	<img class="img-responsive" src="./images/2.jpg" alt="">
-                            </div>
-                            <div class="el-con">
-                                <span>Jun 05 - Aug 27</span>
-                                <h3>U19 Cricket World Cup 2018, England</h3>
-                                <p>The indoor sports mania is back again offering all sorts of indoor sports in the summer.</p>
-                                <a href="">More Information</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="el-img">
-                            	<img class="img-responsive" src="./images/3.jpg" alt="">
-                            </div>
-                            <div class="el-con">
-                                <span>Jun 05 - Aug 27</span>
-                                <h3>Join Cricket academies &amp; coaching at Bristol</h3>
-                                <p>The indoor sports mania is back again offering all sorts of indoor sports in the summer.</p>
-                                <a href="">More Information</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="el-img">
-                            	<img class="img-responsive" src="./images/4.jpg" alt="">
-                            </div>
-                            <div class="el-con">
-                                <span>Jun 05 - Aug 27</span>
-                                <h3>Professional Cricket Coaching for players, New Zealand</h3>
-                                <p>The indoor sports mania is back again offering all sorts of indoor sports in the summer.</p>
-                                <a href="">More Information</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="el-img">
-                            	<img class="img-responsive" src="./images/5(1).jpg" alt="">
-                            </div>
-                            <div class="el-con">
-                                <span>Jun 05 - Aug 27</span>
-                                <h3>Grand Opening Cricket Fan Club, India</h3>
-                                <p>The indoor sports mania is back again offering all sorts of indoor sports in the summer.</p>
-                                <a href="">More Information</a>
-                            </div>
-                        </li>
-
+                    	<?php
+						$today2 = date("Y-m-d");
+						$getEvents2 = "SELECT * FROM EVENTS WHERE event_date >= '".$today2."' ORDER BY event_date LIMIT 5";
+						$resultEvents2 = mysqli_query($con, $getEvents2);
+						if(mysqli_num_rows($resultEvents2)){
+							while($rowEvents2 = mysqli_fetch_array($resultEvents2)){
+								$eventTitle2 = $rowEvents2['event_name'];
+								$eventId2 = $rowEvents2['event_id'];	
+								$eventDate2 = $rowEvents2['event_date'];
+								$eventPlace2 = $rowEvents2['place'];
+								$image2 = $rowEvents2['event_image'];
+								echo '<li>
+									<div class="el-img">
+										<img src="data:image/jpeg;base64,'.base64_encode($image2).'" class="img img-responsive"></img>
+									</div>
+									<div class="el-con">
+										<span>'.date("d F Y", strtotime($eventDate2)).'</span>
+										<h3>'.$eventTitle2.', '.$eventPlace2.'</h3>
+										<a href="src/eventDynamic.php?id='.$eventId2.'">More Information</a>
+									</div>
+								</li>';
+							}
+						} else {
+							
+						}
+						?>
                     </ul>
                 </div>
                 <div class="event-right col-md-3">
                     <ul>
                         <li class="event-right-bg-1">
                             <h4>YOUR AD GOES HERE</h4>
-                            <p>You can publish your add here by contacting Striking Sports.</p>
-                            <a href="">View More</a>
-                        </li>
-                        <li class="event-right-bg-2 p-cri-hom-2">
-                            <h4>YOUR AD GOES HERE</h4>
-                            <p>You can publish your add here by contacting Striking Sports.</p>
-                            <a href="">View More</a>
-                        </li>
-                        <li class="event-right-bg-3 p-cri-hom-3 pad-red-bot-0">
-                            <h4>YOUR AD GOES HERE</h4>
-                            <p>You can publish your add here by contacting Striking Sports.</p>
-                            <a href="">View More</a>
+                            <p>You can publish your ad here by contacting Striking Sports.</p>
+                            <p>Contact : +94 7795 86170</p>
                         </li>
                     </ul>
                 </div>
@@ -260,16 +226,13 @@
             <div class="lp uc1">
                 <div class="row">
                     <div class="hom-tick-book">
-                        <h2>U19 Cricket World Cup</h2>
                         <div class="hom-tick">
-                            <div class="hom-tick-1">
-                                <h3>26 July 2017</h3>
-                            </div>
                             <div class="hom-tick-2">
-                                <span class="hom-tick-21">Preparing for the awesome Cricket experience</span>
+                            	<h4>YOUR AD GOES HERE</h4>
+                                <h4>You can publish your ad here by contacting Striking Sports.</h4>
+                                <h4>Contact : +94 7795 86170</h4>
                             </div>
                         </div>
-                        <a href="" class="hvr-sweep-to-right">More Information</a>
 					</div>
 				</div>
 			</div>
@@ -279,13 +242,12 @@
         <div class="lp spe-bot-red-3">
             <div class="ela">
                 <div class="spe-title-1">
-                    <h2>Pick a <span>Class and join</span> the fun today</h2>
+                    <h2>Pick a <span>Sport and join</span> the fun today</h2>
                     <div class="hom-tit">
                         <div class="hom-tit-1"></div>
                         <div class="hom-tit-2"></div>
                         <div class="hom-tit-3"></div>
                     </div>
-                    <p>Feel the thrill of seeing a global sporting event in one of the world's most incredible cities. Headlining the calendar is the Dubai World Cup</p>
                 </div>
                 <div class="hom-top-trends-box row">
                     <div class="col-md-6 hom-top-trends-box-1">
@@ -295,139 +257,54 @@
                     </div>
                     <div class="col-md-6 hom-top-trends-box-2">
                         <div class="hom-top-trends-box-21 p-cri">
-                            <h4>London: Junior Tournaments</h4>
-                            <p>The indoor sports mania is back again offering all sorts of indoor</p>
-                            <a href="">View More</a>
+                            <h4>YOUR AD GOES HERE</h4>
+                            <p>You can publish your AD here by contacting Striking Sports.</p>
+                            <a>Contact : +94 7795 86170</a>
                         </div>
                     </div>
                     <div class="col-md-6 hom-top-trends-box-2">
                         <div class="hom-top-trends-box-21 hom-top-trends-box-22 p-cri1">
-                            <h4>Improve sports skills</h4>
-                            <p>The indoor sports mania is back again offering all sorts of indoor</p>
-                            <a href="">View More</a>
+                            <h4>YOUR AD GOES HERE</h4>
+                            <p>You can publish your AD here by contacting Striking Sports.</p>
+                            <a>Contact : +94 7795 86170</a>
                         </div>
                     </div>
                 </div>
                 <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/1(2).jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Away Swing Bowlers - Grip (Right arm)</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/11.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Back foot drive</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/9.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Back Foot Defence</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/4(1).jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Example of advancing down wicket</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hom-top-trends row">
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/5(2).jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Front View (no Gloves)</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/6.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Inswing Bowling Grip (Right Arm)</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/7.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Leg Spin - Grip</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="hom-trend pad-red-bot-0">
-                            <div class="hom-trend-img">
-                                <img class="img-responsive" src="./images/8.jpg" alt="">
-                            </div>
-                            <div class="hom-trend-con">
-                                <span><i class="fa fa-futbol-o" aria-hidden="true"></i> 2rd augest 2017</span>
-                                <a href="">
-                                    <h4>Sample drop feed</h4>
-                                </a>
-                                <p>The Sports Games also celebrated and showcased sport, thanks to the city’s stunning setting</p>
-                            </div>
-                        </div>
-                    </div>
+                <?php
+				$getPost = "SELECT * FROM blog_post ORDER BY created_date_time limit 8";
+				$rGetPost = mysqli_query($con, $getPost);
+				if(mysqli_num_rows($rGetPost)!=0){
+					while($rowGetPost = mysqli_fetch_array($rGetPost)){
+						$postDate = $rowGetPost['created_date_time'];
+						$postId = $rowGetPost['post_id'];
+						$postTitle = $rowGetPost['title'];
+						$postDescription = $rowGetPost['description'];
+						$postImage = $rowGetPost['image'];
+						echo '
+							<div class="col-md-3">
+								<div class="hom-trend">
+									<div class="hom-trend-img">
+										<img src="data:image/jpeg;base64,'.base64_encode($postImage).'" class="img img-responsive img-thumbnail" style="width:300px;height:200px;"></img>
+									</div>
+									<div class="hom-trend-con">
+										<span><i class="fa fa-futbol-o" aria-hidden="true"></i>'.date("d F Y", strtotime($postDate)).'</span>
+										<a href="src/view.php?id='.$postId.'">
+											<h4>'.$postTitle.'</h4>
+										</a>
+										<p>'.$postDescription.'</p>
+									</div>
+								</div>
+							</div>
+						';
+					}
+				}
+				?>
                 </div>
             </div>
         </div>
     </section>
-    <section class="ev-po">
+    <!--section class="ev-po">
         <div class="lp">
             <div class="row">
                 <div class="col-md-6 eve-res">
@@ -721,8 +598,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section>
+    </section-->
+    <!--section>
         <div class="lp">
             <div class="spe-title-1">
                 <h2>Fundraising for Sports <span>Clubs &amp; Charities</span></h2>
@@ -751,7 +628,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section-->
     <?php
 	$getPost = "SELECT * FROM blog_post WHERE created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
 	$rGetPost = mysqli_query($con, $getPost);
