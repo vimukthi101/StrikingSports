@@ -32,13 +32,13 @@
                     <a href="src/cricket.php"><img src="./images/c3.png" alt=""> cricket</a>
                 </li>
                 <li>
-                    <a href="src/rugby.php"><img src="./images/c6.png" alt=""> Rugby</a>
+                    <a href="src/rugby.php"><img src="./images/rugby.png" alt=""> Rugby</a>
                 </li>
                 <li>
-                    <a href="src/football.php"><img src="./images/c6.png" alt=""> Football</a>
+                    <a href="src/football.php"><img src="./images/football.png" alt=""> Football</a>
                 </li>
                 <li>
-                    <a href="src/others.php"><img src="./images/c6.png" alt=""> Other Sports</a>
+                    <a href="src/others.php"><img src="./images/othersports.png" alt=""> Other Sports</a>
                 </li>
                 <li>
                     <a href="src/events.php"><img src="./images/f6.png" alt=""> Events</a>
