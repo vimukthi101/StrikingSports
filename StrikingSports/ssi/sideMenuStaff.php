@@ -8,16 +8,16 @@
                 <a href="../src/staffPanel.php"><img src="../images/s1.png" alt=""> Home</a>
             </li>
             <li>
-                <a href="../src/addPost.php"><img src="../images/f6.png" alt=""> Add Post</a>
+                <a href="../src/addPost.php"><img src="../images/addPost.png" alt=""> Add Post</a>
             </li>
             <li>
-                <a href="../src/viewPost.php"><img src="../images/c2.png" alt=""> View Posts</a>
+                <a href="../src/viewPost.php"><img src="../images/viewPost.png" alt=""> View Posts</a>
             </li>
             <li>
-                <a href="../src/addEvents.php"><img src="../images/c3.png" alt=""> Add Events</a>
+                <a href="../src/addEvents.php"><img src="../images/addEvent.png" alt=""> Add Events</a>
             </li>
             <li>
-                <a href="../src/viewEvents.php"><img src="../images/f6.png" alt=""> View Events</a>
+                <a href="../src/viewEvents.php"><img src="../images/viewEvent.png" alt=""> View Events</a>
             </li>
         </ul>
     </div>

@@ -23,7 +23,7 @@ include_once('../ssi/header.php');
             <div class="tr-pro">
                 <div class="inn-title">
                     <h2><i class="fa fa-check" aria-hidden="true"></i> striking sports <span> about us</span></h2>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates</p>
+                    <p>Striking Sports is a website dedicated to sports in Sri Lanka. We provide excellent reports on the matters with regard to the sports in Sri Lanka in an attempt to help Sri Lanka become a much better country in sports. In addition to the local news, we bring the best out of the sports world.</p>
                 </div>
                 <div class="inn-all-com">
                     <h4>match Start Date</h4>

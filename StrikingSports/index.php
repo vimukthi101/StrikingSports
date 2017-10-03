@@ -719,7 +719,7 @@
 								</li>
 								<li><a href=""><i class="fa fa-twitter tw1"></i></a>
 								</li>
-								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
+								<li><a href="https://www.youtube.com/channel/UCQSGAiIUwgzjSs7jhivJ5dQ" target="_blank"><i class="fa fa-youtube gp1"></i></a>
 								</li>
 								<li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
 								</li>
@@ -742,7 +742,7 @@
 								</li>
 								<li><a href=""><i class="fa fa-twitter tw1"></i></a>
 								</li>
-								<li><a href=""><i class="fa fa-youtube gp1"></i></a>
+								<li><a href="https://www.youtube.com/channel/UCQSGAiIUwgzjSs7jhivJ5dQ" target="_blank"><i class="fa fa-youtube gp1"></i></a>
 								</li>
 								<li><a href="mailto:sports@striking.lk"><i class="fa fa-envelope-o sh1"></i></a>
 								</li>
