@@ -27,12 +27,12 @@ include_once('../ssi/smtpSettings.php');
 						if(isset($_POST['submit'])){
 							if(isset($_POST['email'])){
 								$email = $_POST['email'];
-								$getUser = "SELECT * FROM users WHERE email='".$email."'";
+								$getUser = "SELECT * FROM staff WHERE email='".$email."'";
 								$resultGetUser = mysqli_query($con, $getUser);
 								if(mysqli_num_rows($resultGetUser)!=0){
 									$newPass = rand(0000000,9999999);
 									$newPassword = md5($newPass);
-									$updatePassword = "UPDATE users SET PASSWORD='".$newPassword."', previous_password='' WHERE email='".$email."'";
+									$updatePassword = "UPDATE staff SET PASSWORD='".$newPassword."', previous_password='' WHERE email='".$email."'";
 									if(mysqli_query($con, $updatePassword)){
 										//send email
 										$to = $email;

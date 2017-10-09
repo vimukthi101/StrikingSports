@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Striking Sports</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./images/strikingLogo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/StrikingSports.png" type="image/x-icon">
     <link href="./css/css.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -252,7 +252,9 @@
                 <div class="hom-top-trends-box row">
                     <div class="col-md-6 hom-top-trends-box-1">
                         <div class="hom-top-trends-box-11">
-                            <img class="img-responsive" src="./images/1(1).jpg" alt="">
+							<video autoplay loop style="background-size:cover;left:0px;width:100%;height:auto;top:0px;z-index:-100;padding:0;margin:0;">
+								<source src="videos/striking.mp4" type="video/mp4" />
+							</video>
                         </div>
                     </div>
                     <div class="col-md-6 hom-top-trends-box-2">

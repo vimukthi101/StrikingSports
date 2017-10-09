@@ -4,24 +4,20 @@ sports web site
 TO DO
 #####
 
-1) check forgot password error message redirection issue
-2) add a new table as user_lockout, add blocke users to table with unblock time, check the table in each login for records for particular user. change the error message on blocked users
-3) reply comment add
-4) add permission check to every page
-5) change left panel accroding to the permissions, dynamic events for normal users and etc
-7) serach bar
+1) reply comment add
+2) add permission check to every page
+3) change left panel accroding to the permissions, dynamic events for normal users and etc
+4) serach bar
 
 staff position
 ##############
-
 
 sysadmin - 0
 editor - 1
 approver - 2
 
-post status
-###########
-
+post/event status
+#################
 
 draft - 0
 pending approval - 1
@@ -30,7 +26,6 @@ rejected - 3
 
 like status
 ###########
-
 
 like - 0
 dislike - 1

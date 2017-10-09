@@ -50,7 +50,7 @@ include_once('../ssi/header.php');
 									</div>';
 							} else if($error == 'da'){
 								echo '<div style="padding:1px;">
-										<label class="form-control" style="height:55px;">Your Account Is Deactivated Due To Three Unsuccessfull Login Attempts. Please Contact Us.</label>
+										<label class="form-control" style="height:55px;">Your Account Is Locked Due To Three Unsuccessfull Login Attempts. Please Wait 30 Minutes And Try Later.</label>
 									</div>';
 							} else if($error == 'bl'){
 								echo '<div style="padding:3px;">

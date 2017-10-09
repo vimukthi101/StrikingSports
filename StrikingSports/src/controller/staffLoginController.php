@@ -5,7 +5,6 @@
 	//errors will not be shown
 	//error_reporting(0);
 	include_once('../../ssi/db.php');
-	include_once('../../ssi/smtpSettings.php');
 	if(isset($_POST['submit'])){
 		if(!empty($_POST['userNIC']) && !empty($_POST['password'])){
 			//get user name and password
@@ -15,99 +14,113 @@
 				if(preg_match('/\S+/',$up)){
 					$userName = htmlspecialchars(mysql_real_escape_string($un));
 					$userPassword = md5(htmlspecialchars(mysql_real_escape_string($up)));
-					//mysql query to get user
-					$query = "SELECT * FROM staff WHERE email='".$userName."' AND password='".$userPassword."'";
-					$result = mysqli_query($con, $query) or die();
-					if(mysqli_num_rows($result)==0){
-						//if password is wrong redirect to login page
-						$getStatus = "SELECT * FROM staff WHERE email='".$userName."'";
-						$statusResult = mysqli_query($con, $getStatus) or die();
-						if(mysqli_num_rows($statusResult)!=0){
-							while($statusRow = mysqli_fetch_array($statusResult)){
-								//update login attempt by one
-								$loginAttempt = $statusRow['login_attempt'];
-								$newLoginAttempt = $loginAttempt + 1;
-								$updateLoginAttempt = "UPDATE staff SET login_attempt='".$newLoginAttempt."' WHERE email='".$userName."'";
-								if(mysqli_query($con, $updateLoginAttempt)){
-									if($newLoginAttempt >= "3"){
-										//block the user if attempts are >= 3
-										$updateLoginAttempt = "UPDATE staff SET status='0' WHERE email='".$userName."'";
-										if(mysqli_query($con, $updateLoginAttempt)){
-											//send email to meet admin
-											$to = $userName;
-											//Set who the message is to be sent to
-											$mail->addAddress($to, $to);
-											//Set the subject line
-											$mail->Subject = "Account Deactivated";
-$mail->Body = "Dear Staff Member,
-
-Your account has been deactivated due to three unsuccessfull login attempts. System detects it as an unauthorized login attempt. Please contact the Admin to re activate your account.
-
-Please try to minimize such errors in the future
-
-p.s. : Please do not reply to this email.
-
-Thank You!
-Striking Sports";
-											$mail->send();
-											header('Location:../staffLogin.php?error=da');
+					$getLockout = "SELECT lockout_remove_time FROM staff_lockout WHERE email='".$userName."'";
+					$resultLockout = mysqli_query($con, $getLockout);
+					if(mysqli_num_rows($resultLockout)!=0){
+						//user is locked
+						while($rowLockout = mysqli_fetch_array($resultLockout)){
+							$lockout_remove_time = $rowLockout['lockout_remove_time'];
+							$currentTime = date("Y-m-d H:i:s");
+							if($currentTime > $lockout_remove_time){
+								//lockout expired
+								$removeLock = "DELETE FROM staff_lockout WHERE email='".$userName."'";
+								if(mysqli_query($con, $removeLock));
+								$updateLogin = "UPDATE staff SET login_attempt='0', status='1' WHERE email='".$userName."'";
+								if(mysqli_query($con, $updateLogin));
+								$canLogin = "1";
+							} else {
+								//still locked
+								$canLogin = "0";
+								header('Location:../staffLogin.php?error=da');
+							}
+						}
+					} else {
+						$canLogin = "1";
+					}
+					if($canLogin == "1"){
+						//continue
+						//mysql query to get user
+						$query = "SELECT * FROM staff WHERE email='".$userName."' AND password='".$userPassword."'";
+						$result = mysqli_query($con, $query) or die();
+						if(mysqli_num_rows($result)==0){
+							//if password is wrong redirect to login page
+							$getStatus = "SELECT * FROM staff WHERE email='".$userName."'";
+							$statusResult = mysqli_query($con, $getStatus) or die();
+							if(mysqli_num_rows($statusResult)!=0){
+								while($statusRow = mysqli_fetch_array($statusResult)){
+									//update login attempt by one
+									$loginAttempt = $statusRow['login_attempt'];
+									$newLoginAttempt = $loginAttempt + 1;
+									$updateLoginAttempt = "UPDATE staff SET login_attempt='".$newLoginAttempt."' WHERE email='".$userName."'";
+									if(mysqli_query($con, $updateLoginAttempt)){
+										if($newLoginAttempt >= "3"){
+											//block the user if attempts are >= 3
+											$updateLoginAttempt = "UPDATE staff SET status='0' WHERE email='".$userName."'";
+											if(mysqli_query($con, $updateLoginAttempt)){
+												$time = date("Y-m-d H:i:s", strtotime("+30 minutes"));
+												$lockout = "INSERT INTO staff_lockout (email, lockout_remove_time) VALUES('".$userName."','".$time."')";
+												if(mysqli_query($con, $lockout));
+												header('Location:../staffLogin.php?error=da');
+											} else {
+												//wrong password error message
+												header('Location:../staffLogin.php?error=wu');	
+											}
 										} else {
 											//wrong password error message
 											header('Location:../staffLogin.php?error=wu');	
 										}
 									} else {
 										//wrong password error message
-										header('Location:../staffLogin.php?error=wu');	
+										header('Location:../staffLogin.php?error=wu');
 									}
-								} else {
-									//wrong password error message
-									header('Location:../staffLogin.php?error=wu');
-								}
-							}
-						} else {
-							//wrong nic error message
-							header('Location:../staffLogin.php?error=wu');			
-						}
-					} else {
-						while($row = mysqli_fetch_array($result)){
-							$userNIC = $row['email'];
-							$userContact = $row['contact_no'];
-							$userNameId = $row['name_name_id'];
-							$userAddressID = $row['address_address_id'];
-							$userPassword = $row['password'];
-							$userStatus = $row['status'];
-							$userPreviousPassword = $row['previous_password'];
-							$position = $row['position'];
-							//sessions
-							$_SESSION['position'] = $position;
-							$_SESSION['name_id'] = $userNameId;
-							$_SESSION['email'] = $userNIC;
-							$_SESSION['address_id'] = $userAddressID;
-							$getName = "SELECT * FROM NAME WHERE name_id='".$userNameId."'";
-							$resultGetName = mysqli_query($con, $getName) or die();
-							if(mysqli_num_rows($resultGetName)!=0){
-								while($getNameRow = mysqli_fetch_array($resultGetName)){
-									$userFname = $getNameRow['first_name'];
-									$_SESSION['first_name'] = $userFname;
 								}
 							} else {
-								$userFname = $userNIC;
-								$_SESSION['first_name'] = $userFname;
+								//wrong nic error message
+								header('Location:../staffLogin.php?error=wu');			
 							}
-							if($userStatus == "1"){
-								if($userPreviousPassword == ""){
-									//if successfull and if it is the first login then redirect to cahnge password
-									header('Location:../changeStaffPassword.php');	
+						} else {
+							while($row = mysqli_fetch_array($result)){
+								$userNIC = $row['email'];
+								$userContact = $row['contact_no'];
+								$userNameId = $row['name_name_id'];
+								$userAddressID = $row['address_address_id'];
+								$userPassword = $row['password'];
+								$userStatus = $row['status'];
+								$userPreviousPassword = $row['previous_password'];
+								$position = $row['position'];
+								//sessions
+								$_SESSION['position'] = $position;
+								$_SESSION['name_id'] = $userNameId;
+								$_SESSION['email'] = $userNIC;
+								$_SESSION['address_id'] = $userAddressID;
+								$getName = "SELECT * FROM NAME WHERE name_id='".$userNameId."'";
+								$resultGetName = mysqli_query($con, $getName) or die();
+								if(mysqli_num_rows($resultGetName)!=0){
+									while($getNameRow = mysqli_fetch_array($resultGetName)){
+										$userFname = $getNameRow['first_name'];
+										$_SESSION['first_name'] = $userFname;
+									}
 								} else {
-									//if successfull then redirect to home based on the position
-									header('Location:../staffPanel.php');	
-								}	
-							} else{
-								//if user is not active redirect to login page, meet admin error message
-								session_unset();
-								header('Location:../staffLogin.php?error=na');	
+									$userFname = $userNIC;
+									$_SESSION['first_name'] = $userFname;
+								}
+								if($userStatus == "1"){
+									if($userPreviousPassword == ""){
+										//if successfull and if it is the first login then redirect to cahnge password
+										header('Location:../changeStaffPassword.php');	
+									} else {
+										//if successfull then redirect to home based on the position
+										header('Location:../staffPanel.php');	
+									}	
+								} else{
+									//if user is not active redirect to login page, meet admin error message
+									session_unset();
+									header('Location:../staffLogin.php?error=na');	
+								}
 							}
 						}
+					} else {
+						header('Location:../login.php?error=da');
 					}
 				} else {
 					//invalid password

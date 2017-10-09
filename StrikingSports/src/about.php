@@ -26,78 +26,7 @@ include_once('../ssi/header.php');
                     <p>Striking Sports is a website dedicated to sports in Sri Lanka. We provide excellent reports on the matters with regard to the sports in Sri Lanka in an attempt to help Sri Lanka become a much better country in sports. In addition to the local news, we bring the best out of the sports world.</p>
                 </div>
                 <div class="inn-all-com">
-                    <h4>match Start Date</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <div class="inn-ev-date">
-                        <div class="inn-ev-date-left">
-                            <h4>28 th</h4>
-                            <span>augest 2017</span>
-                        </div>
-                        <div class="inn-ev-date-rig">
-                            <ul>
-                                <li>20 <span>days</span>
-                                </li>
-                                <li>08 <span>hours</span>
-                                </li>
-                                <li>35 <span>min</span>
-                                </li>
-                                <li>47 <span>sec</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inn-all-com inn-all-list tp-1">
-                    <h4>Other Details</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <ul>
-                        <li>Get trained by qualified personnel</li>
-                        <li>Guest lectures by International faculty</li>
-                        <li>Internship with the Global cricket leader</li>
-                        <li>Placement opportunities with Gold’s Gym</li>
-                        <li>Earn handsome salaries on completion of course</li>
-                        <li>cricket Assessment room</li>
-                    </ul>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Current match events</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to view Current match events</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Upcoming sports events</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to view Upcoming sports events</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Top trending sports events</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to view Top trending sports</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Ticket Booking</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to Book your tickets</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Team Registration</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to Register your Team</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>Team Ranking</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to view Team Ranking</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>OUR SPONSORS</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to Sponsors</a>
-                </div>
-                <div class="inn-all-com inn-all-list inn-pad-top-5 tp-1">
-                    <h4>make donation</h4>
-                    <p>Becoming a gym certified personal cricket trainer is your foundation for success. gym is the only personal trainer certification program that integrates a complete approach to cricket, wellness and business skills.</p>
-                    <a href="" class="inn-te-ra-link">Click to Donate</a>
+                    
                 </div>
             </div>
         </div>

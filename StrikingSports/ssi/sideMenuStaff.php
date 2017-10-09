@@ -2,7 +2,7 @@
     <div class="menu">
         <ul>
         	<li>
-                <a href="../index.php" target="_blank"><img src="../images/s1.png" alt=""> View Site</a>
+                <a href="../index.php" target="_blank"><img src="../images/viewSite.png" alt=""> View Site</a>
             </li>
             <li>
                 <a href="../src/staffPanel.php"><img src="../images/s1.png" alt=""> Home</a>
