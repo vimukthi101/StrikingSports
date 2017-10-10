@@ -119,7 +119,7 @@
 						$eventTitle = $rowEvents['event_name'];
 						$eventId = $rowEvents['event_id'];	
 						echo '<ul>
-								<li><a href="src/eventDynamic.php?id='.$eventId.'"><span>'.$counter.'</span>'.$eventTitle.'</a></li>
+								<li><a href="src/viewEvent.php?id='.$eventId.'"><span>'.$counter.'</span>'.$eventTitle.'</a></li>
 							</ul>';
 						$counter++;
 					}
@@ -199,7 +199,7 @@
 									<div class="el-con">
 										<span>'.date("d F Y", strtotime($eventDate2)).'</span>
 										<h3>'.$eventTitle2.', '.$eventPlace2.'</h3>
-										<a href="src/eventDynamic.php?id='.$eventId2.'">More Information</a>
+										<a href="src/viewEvent.php?id='.$eventId2.'">More Information</a>
 									</div>
 								</li>';
 							}
@@ -767,7 +767,7 @@
 								   $seventId = $sRow['event_id'];
 								   $sname = $sRow['event_name'];
 								   $simage = $sRow['event_image'];
-								   echo '<a href="eventDynamic.php?id='.$eventId.'"><li>
+								   echo '<a href="src/viewEvent.php?id='.$eventId.'"><li>
 										<img src="data:image/jpeg;base64,'.base64_encode($simage).'" class="img img-responsive" style="height:90px;width:120px;"></img>
 										<div class="foot-pop-eve">
 											<span>'.$sname.'</span>

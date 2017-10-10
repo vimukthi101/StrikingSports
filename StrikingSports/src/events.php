@@ -52,7 +52,7 @@ include_once('../ssi/db.php');
                                     </div>
                                 </td>
                                 <td class="e_h1">'.$place.'</td>
-                                <td><a href="eventDynamic.php?id='.$eventId.'" class="link-btn">More Info</a></td>
+                                <td><a href="viewEvent.php?id='.$eventId.'" class="link-btn">More Info</a></td>
                             </tr>';
 					   }
 				   } else {

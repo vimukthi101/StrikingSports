@@ -6,8 +6,7 @@ TO DO
 
 1) reply comment add
 2) add permission check to every page
-3) change left panel accroding to the permissions, dynamic events for normal users and etc
-4) serach bar
+3) serach bar
 
 staff position
 ##############

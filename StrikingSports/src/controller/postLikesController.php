@@ -22,7 +22,7 @@ if(isset($_GET['status']) && isset($_GET['pStatus']) && isset($_GET['id'])){
 		$insert = "INSERT INTO likes (STATUS,blog_post_id,users_email) VALUES ('".$status."','".$id."','".$email."')";
 	}
 	mysqli_query($con, $insert);
-	header('Location:../post.php?id='.$id);
+	header('Location:../view.php?id='.$id);
 } else {
 	//redirect to form not submit
 	header('Location:../../index.php');

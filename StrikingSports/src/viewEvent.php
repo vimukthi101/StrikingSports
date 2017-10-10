@@ -16,14 +16,8 @@ include_once('../ssi/db.php');
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
     <?php
-		if(isset($_SESSION['position']) && $_SESSION['position']==0){
-			include_once('../ssi/sideMenuAdmin.php');
-		} else if(isset($_SESSION['position']) && $_SESSION['position']==1){
-			include_once('../ssi/sideMenuStaff.php');
-		} else if(isset($_SESSION['position']) && $_SESSION['position']==2){
-			include_once('../ssi/sideMenuApprover.php');
-		}
-		include_once('../ssi/topMenuStaff.php');
+		include_once('../ssi/sideMenu.php');
+		include_once('../ssi/topMenu.php');
 		include_once('../ssi/searchBar.php');
 	?>
     <section>
@@ -71,6 +65,8 @@ include_once('../ssi/db.php');
 	?>
     </section>
     <?php
+		include_once('../ssi/latestPost.php');
+		include_once('../ssi/footer.php');
 		include_once('../ssi/copyRights.php');
 	?>
     <script type="text/javascript" src="../js/jquery.min.js"></script>

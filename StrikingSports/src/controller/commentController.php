@@ -14,7 +14,7 @@ if(isset($_SESSION['email'])){
 			$email = $_SESSION['email'];
 			$insert = "INSERT INTO comments (comments, comment_date_time, blog_post_post_id, users_email) VALUES ('".$comment."','".$time."','".$post."','".$email."')";
 			mysqli_query($con, $insert);
-			header('Location:../post.php?id='.$post);
+			header('Location:../view.php?id='.$post);
 		} else {
 			//redirect to form empty fields
 			header('Location:../../404.php');

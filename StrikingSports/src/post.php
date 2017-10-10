@@ -16,7 +16,13 @@ include_once('../ssi/db.php');
         <div id="status" style="display: none;">&nbsp;</div>
     </div>
     <?php
-		include_once('../ssi/sideMenuStaff.php');
+		if(isset($_SESSION['position']) && $_SESSION['position']==0){
+			include_once('../ssi/sideMenuAdmin.php');
+		} else if(isset($_SESSION['position']) && $_SESSION['position']==1){
+			include_once('../ssi/sideMenuStaff.php');
+		} else if(isset($_SESSION['position']) && $_SESSION['position']==2){
+			include_once('../ssi/sideMenuApprover.php');
+		}
 		include_once('../ssi/topMenuStaff.php');
 		include_once('../ssi/searchBar.php');
 	?>
@@ -87,11 +93,11 @@ include_once('../ssi/db.php');
                 <h2><i class="fa fa-check" aria-hidden="true"></i> '.$title.'</h2>
 				<h3><a><i class="fa fa-eye" aria-hidden="true"></i><span> '.$views.' </span></a>';
 				if($postLikeStatus == 0){
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=0"><i class="fa fa-thumbs-up" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					echo '<i class="fa fa-thumbs-up" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$likes.' </span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span>';
 				} else if($postLikeStatus == 1) {
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=1"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=1"><i class="fa fa-thumbs-down" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					echo '<i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span><i class="fa fa-thumbs-down" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$unLikes.'</span>';
 				} else if($postLikeStatus == 2) {
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=2"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=2"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					echo '<i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span>';
 				}
 				echo '</h3>
             </div>
@@ -139,11 +145,11 @@ include_once('../ssi/db.php');
 									<textarea disabled>'.$comment.'</textarea>
 									<p>';
 						if($commentLikeStatus == 0){
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';	
+							echo '<i class="fa fa-thumbs-up" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentLike.' </span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span>';	
 						} else if($commentLikeStatus == 1) {
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentUnLike.'</span></a>';
+							echo '<i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span><i class="fa fa-thumbs-down" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentUnLike.'</span>';
 						} else if($commentLikeStatus == 2) {
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';
+							echo '<i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span>';
 						}
 									echo '</p>
 									<p id="new"></p>
@@ -151,19 +157,6 @@ include_once('../ssi/db.php');
 							</div>';
 					}
 				}
-				echo '<div class="lp spe-bot-red-3" style="padding-top:0;">
-					<div class="p-mf">
-					<form role="form" class="form-group" action="controller/commentController.php" method="post">
-						<div style="padding:10px;">
-							<textarea id="comment" name="comment" class="form-control" required></textarea>
-							<input type="text" name="post" id="post" hidden="" value="'.$id.'">
-						</div>
-						<div class="col-md-2 pull-right" style="padding:10px;">
-							<input type="submit" id="submit" name="submit" value="Post Comment" class="form-control btn btn-success">
-						</div>
-					</form>
-					</div>
-				 </div>';
 		} else {
 			echo '<div class="lp spe-bot-red-3 text-center" style="height:400px;">
             <div class="inn-title">

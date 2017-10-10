@@ -91,7 +91,7 @@ if(mysqli_num_rows($rGetPosts)!=0){
 								   $seventId = $sRow['event_id'];
 								   $sname = $sRow['event_name'];
 								   $simage = $sRow['event_image'];
-								   echo '<a href="eventDynamic.php?id='.$eventId.'"><li>
+								   echo '<a href="viewEvent.php?id='.$seventId.'"><li>
 										<img src="data:image/jpeg;base64,'.base64_encode($simage).'" class="img img-responsive" style="height:90px;width:120px;"></img>
 										<div class="foot-pop-eve">
 											<span>'.$sname.'</span>

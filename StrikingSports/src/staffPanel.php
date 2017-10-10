@@ -491,7 +491,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 					</div>';
 				}
 			} else {
-				echo '<h2 class="text-center">No Blog Posts To Show</h2>';	
+				echo '<h2 class="text-center" style="padding:20px;">No Blog Posts To Show</h2>';	
 			}
 			?>
         </div>

@@ -23,7 +23,7 @@ if(isset($_GET['status']) && isset($_GET['pStatus']) && isset($_GET['id']) && is
 		$insert = "INSERT INTO comment_like (STATUS,comment_id,users_email) VALUES ('".$status."','".$id."','".$email."')";
 	}
 	mysqli_query($con, $insert);
-	header('Location:../post.php?id='.$post);
+	header('Location:../view.php?id='.$post);
 } else {
 	//redirect to form not submit
 	header('Location:../../index.php');
