@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['email'])){
 	include_once('../../ssi/db.php');
 	if(isset($_POST['submit'])){
 		if(!empty($_POST['regDate']) || !empty($_POST['nic']) || !empty($_POST['fname']) || !empty($_POST['lname']) || !empty($_POST['addresNo']) || !empty($_POST['lane']) || !empty($_POST['city'])){
@@ -83,4 +84,7 @@
 		//redirect to form not submit
 		header('Location:../../404.php');
 	}
+} else {
+	header('Location:../../404.php');
+}
 ?>

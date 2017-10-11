@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['email'])){
 	$email = $_SESSION['email'];
 	include_once('../../ssi/db.php');
 	if(isset($_POST['submit'])){
@@ -52,4 +53,7 @@
 		//if not submitted
 		header('Location:../../404.php');
 	}
+} else {
+	header('Location:../../404.php');
+}
 ?>

@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['position']) && ($_SESSION['position']==0 || $_SESSION['position']==1 || $_SESSION['position']==2)){
 	include_once('../../ssi/db.php');
 	include_once('../../ssi/smtpSettings.php');
 	if(isset($_POST['submit'])){
@@ -69,4 +70,8 @@ Striking Sports";
 		//redirect to form not submit
 		header('Location:../../404.php');
 	}
+} else {
+	// 404 no operation
+	header('Location:../../404.php');	
+}
 ?>

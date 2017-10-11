@@ -2,12 +2,15 @@
 if(!isset($_SESSION[''])){
 	session_start();
 }
+if(isset($_SESSION['position']) && ($_SESSION['position']==0 || $_SESSION['position']==1 || $_SESSION['position']==2)){
 if(isset($_SESSION['email'])){
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 	include_once('../ssi/header.php');
+	//errors will not be shown
+	error_reporting(0);
 ?>
 
 <body style="overflow:visible;">
@@ -132,6 +135,9 @@ if(isset($_SESSION['email'])){
 </body>
 </html>
 <?php
+} else {
+	header('Location:../404.php');
+}
 } else {
 	header('Location:../404.php');
 }

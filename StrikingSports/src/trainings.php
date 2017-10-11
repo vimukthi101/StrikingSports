@@ -7,6 +7,8 @@ if(!isset($_SESSION[''])){
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 <body style="overflow:visible;">
     <div id="preloader" style="display: none;">

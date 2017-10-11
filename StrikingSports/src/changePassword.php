@@ -8,6 +8,8 @@ if(isset($_SESSION['email'])){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 	include_once('../ssi/header.php');
+	//errors will not be shown
+	error_reporting(0);
 ?>
 
 <body style="overflow:visible;">

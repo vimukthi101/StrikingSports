@@ -8,6 +8,8 @@ if(!isset($_SESSION[''])){
 <?php
 	include_once('../ssi/header.php');
 	include_once('../ssi/db.php');
+	//errors will not be shown
+	error_reporting(0);
 ?>
 
 <body style="overflow:visible;">

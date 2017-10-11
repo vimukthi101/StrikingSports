@@ -3,7 +3,7 @@ if(!isset($_SESSION[''])){
 	session_start();
 }
 //errors will not be shown
-//error_reporting(0);
+error_reporting(0);
 include_once('../../ssi/db.php');
 if(isset($_SESSION['email'])){
 	if(isset($_POST['submit'])){

@@ -8,6 +8,8 @@ if(!isset($_SESSION[''])){
 <link rel="stylesheet" href="../css/style-squads.css">
 <?php
 include_once('../ssi/header.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 
 <body style="overflow:visible;">

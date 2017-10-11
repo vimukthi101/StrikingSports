@@ -9,6 +9,8 @@ if(isset($_SESSION['email'])){
 <?php
 include_once('../ssi/header.php');
 include_once('../ssi/db.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 
 <body style="overflow: visible;">
@@ -115,13 +117,13 @@ include_once('../ssi/db.php');
                 <div class="form-group">
                     <label for="employeelNIC" class="control-label col-md-3">E-mail <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control" type="text" name="nic" id="nic" readonly="readonly" value="<?php echo $email; ?>" required="required"/>
+                    	<input class="form-control" type="text" name="nic" id="nic" readonly value="<?php echo $email; ?>" required/>
                 	</div>
                 </div>
                 <div class="form-group">
                     <label for="employeefName" class="control-label col-md-3">First Name <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control text-capitalize" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="fname" id="fname" value="<?php echo $eFName; ?>" required="required"/>
+                    	<input class="form-control text-capitalize" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="fname" id="fname" value="<?php echo $eFName; ?>" required/>
                 	</div>
                 </div>
                 <div class="form-group">
@@ -133,25 +135,25 @@ include_once('../ssi/db.php');
                 <div class="form-group">
                     <label for="employeelName" class="control-label col-md-3">Last Name <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8"> 
-                    	<input class="form-control text-capitalize" type="text" name="lname" id="lname" value="<?php echo $eLName; ?>" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." required="required"/>
+                    	<input class="form-control text-capitalize" type="text" name="lname" id="lname" value="<?php echo $eLName; ?>" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." required/>
                 	</div>
                 </div>
                 <div class="form-group">
                     <label for="addressNo" class="control-label col-md-3">Address Number <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control text-capitalize" type="text" name="addresNo" id="addressNo" value="<?php echo $eAno; ?>" pattern="^([0-9].*[\\/][a-zA-Z0-9]*)|([0-9].*)$" title="Should Be Letters, Numbers, / or \. Cannot Be Empty." required="required"/>
+                    	<input class="form-control text-capitalize" type="text" name="addresNo" id="addressNo" value="<?php echo $eAno; ?>" pattern="^([0-9].*[\\/][a-zA-Z0-9]*)|([0-9].*)$" title="Should Be Letters, Numbers, / or \. Cannot Be Empty." required/>
                 	</div>
                 </div>
                 <div class="form-group">
                     <label for="addressLane" class="control-label col-md-3">Lane/ Street <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control text-capitalize" type="text" name="lane" id="lane" value="<?php echo $eALane; ?>" pattern="^[a-zA-Z ]+$" title="Should Be Letters. Cannot Be Empty." required="required"/>
+                    	<input class="form-control text-capitalize" type="text" name="lane" id="lane" value="<?php echo $eALane; ?>" pattern="^[a-zA-Z ]+$" title="Should Be Letters. Cannot Be Empty." required/>
                 	</div>
                 </div>
                 <div class="form-group">
                     <label for="addressCity" class="control-label col-md-3">City <span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control text-capitalize" type="text" name="city" id="city" value="<?php echo $eACity; ?>" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." required="required"/>
+                    	<input class="form-control text-capitalize" type="text" name="city" id="city" value="<?php echo $eACity; ?>" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." required/>
                 	</div>
                 </div>
                 <div class="form-group">
@@ -163,7 +165,7 @@ include_once('../ssi/db.php');
                 <div class="form-group">
                     <label for="regDate" class="control-label col-md-3">Registered Date Time<span style="color:rgb(255,0,0);">*</span></label>
                     <div class="col-md-8">
-                    	<input class="form-control text-capitalize" type="text" name="regDate" id="regDate" readonly="readonly" value="<?php echo $regDateTime; ?>" required="required"/>
+                    	<input class="form-control text-capitalize" type="text" name="regDate" id="regDate" readonly value="<?php echo $regDateTime; ?>" required/>
                 	</div>
                 </div>
                 <div class="form-group" style="text-align:center;">

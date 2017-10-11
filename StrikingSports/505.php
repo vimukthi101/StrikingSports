@@ -23,7 +23,7 @@
         <img src="images/505.png" class="img-responsive center-block" style="padding:50px;margin-top:80px;height:80vh;"/>
         <?php
 			session_destroy();
-			header("Refresh: 5; URL=index.php");
+			//header("Refresh: 5; URL=index.php");
 		?>
     </div>
 <!--body end-->

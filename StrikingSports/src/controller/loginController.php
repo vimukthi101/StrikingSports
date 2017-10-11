@@ -3,7 +3,7 @@
 		session_start();
 	}
 	//errors will not be shown
-	//error_reporting(0);
+	error_reporting(0);
 	include_once('../../ssi/db.php');
 	if(isset($_POST['submit'])){
 		if(!empty($_POST['userNIC']) && !empty($_POST['password'])){

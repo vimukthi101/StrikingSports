@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['email'])){
 	include_once('../../ssi/db.php');
 	include_once('../../ssi/smtpSettings.php');
 	if(isset($_SESSION['email'])){
@@ -53,4 +54,7 @@ Striking Sports";
 		//error page 404
 		header('Location:../../404.php');
 	}	
+} else {
+	header('Location:../../404.php');
+}
 ?>

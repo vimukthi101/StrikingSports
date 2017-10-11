@@ -5,8 +5,7 @@ TO DO
 #####
 
 1) reply comment add
-2) add permission check to every page
-3) serach bar
+2) serach bar
 
 staff position
 ##############

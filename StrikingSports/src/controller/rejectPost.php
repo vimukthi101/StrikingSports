@@ -3,7 +3,8 @@ if(!isset($_SESSION[''])){
 	session_start();
 }
 //errors will not be shown
-//error_reporting(0);
+error_reporting(0);
+if(isset($_SESSION['position']) && $_SESSION['position']==2){
 include_once('../../ssi/db.php');
 include_once('../../ssi/smtpSettings.php');
 if(isset($_GET['id'])){
@@ -48,5 +49,8 @@ Striking Sports";
 } else {
 	//redirect to form not submit
 	header('Location:../approveReject.php');
+}
+} else {
+	header('Location:../../404.php');	
 }
 ?>

@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['position']) && $_SESSION['position']==0){
 	include_once('../../ssi/db.php');
 	include_once('../../ssi/smtpSettings.php');
 	if(!empty($_GET['id']) && !empty($_GET['category'])){
@@ -58,4 +59,7 @@
 		//redirect to form empty fields
 		header('Location:../removeCategory.php');
 	}
+} else {
+	header('Location:../../404.php');	
+}
 ?>

@@ -4,6 +4,8 @@
 include_once('../ssi/header.php');
 include_once('../ssi/db.php');
 include_once('../ssi/smtpSettings.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 
 <body style="overflow:visible;">

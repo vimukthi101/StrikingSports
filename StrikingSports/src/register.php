@@ -12,6 +12,8 @@ include_once('../ssi/header.php');
 		include_once('../ssi/sideMenu.php');
 		include_once('../ssi/topMenu.php');
 		include_once('../ssi/searchBar.php');
+		//errors will not be shown
+		error_reporting(0);
 	?>
     <section>
         <div class="lp" style="background-image:url(../images/bg-s.jpg);background-repeat:no-repeat;background-size:cover;">
@@ -63,13 +65,13 @@ include_once('../ssi/header.php');
                             <div class="form-group">
                                 <label for="employeeEmail" class="control-label col-md-3">E-Mail <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" title="Should Be A Valid EMail Address" type="email" name="email" id="email" required="required"/>
+                                    <input class="form-control" title="Should Be A Valid EMail Address" type="email" name="email" id="email" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="employeefName" class="control-label col-md-3">First Name <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="fname" id="fname" required="required"/>
+                                    <input class="form-control" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="fname" id="fname" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -81,25 +83,25 @@ include_once('../ssi/header.php');
                             <div class="form-group">
                                 <label for="employeelName" class="control-label col-md-3">Last Name <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="lname" id="lname" required="required"/>
+                                    <input class="form-control" pattern="^[a-zA-Z]+$" title="Should Be Letters. Cannot Be Empty." type="text" name="lname" id="lname" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="addressNo" class="control-label col-md-3">Address Number <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" pattern="^([0-9].*[\\/][a-zA-Z0-9]*)|([0-9].*)$" title="Should Be Letters, Numbers, / or \. Cannot Be Empty." type="text" name="addresNo" id="addressNo" required="required"/>
+                                    <input class="form-control" pattern="^([0-9].*[\\/][a-zA-Z0-9]*)|([0-9].*)$" title="Should Be Letters, Numbers, / or \. Cannot Be Empty." type="text" name="addresNo" id="addressNo" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="addressLane" class="control-label col-md-3">Lane/ Street <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" title="Should Be Letters. Cannot Be Empty." type="text" name="lane" id="lane" required="required"/>
+                                    <input class="form-control" title="Should Be Letters. Cannot Be Empty." type="text" name="lane" id="lane" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="addressCity" class="control-label col-md-3">City <span style="color:rgb(255,0,0);">*</span></label>
                                 <div class="col-md-8">
-                                    <input class="form-control" title="Should Be Letters. Cannot Be Empty." type="text" name="city" id="city" required="required"/>
+                                    <input class="form-control" title="Should Be Letters. Cannot Be Empty." type="text" name="city" id="city" required/>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -1,9 +1,10 @@
 <?php
-	if(!isset($_SESSION[''])){
-		session_start();
-	}
-	//errors will not be shown
-	//error_reporting(0);
+if(!isset($_SESSION[''])){
+	session_start();
+}
+//errors will not be shown
+error_reporting(0);
+if(isset($_SESSION['position']) && $_SESSION['position']==1){
 	include_once('../../ssi/db.php');
 	include_once('../../ssi/smtpSettings.php');
 	if(isset($_POST['submit'])){
@@ -88,4 +89,7 @@ Striking Sports";
 		//redirect to form not submit
 		header('Location:../addEvents.php?error=ns');
 	}
+} else {
+	header('Location:../../404.php');	
+}
 ?>

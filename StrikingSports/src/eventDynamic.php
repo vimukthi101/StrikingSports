@@ -2,6 +2,7 @@
 if(!isset($_SESSION[''])){
 	session_start();
 }
+if(isset($_SESSION['position']) && ($_SESSION['position']==0 || $_SESSION['position']==1 || $_SESSION['position']==2)){
 if(isset($_GET['id']) && !empty($_GET['id'])){
 ?>
 <!DOCTYPE html>
@@ -9,6 +10,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php
 include_once('../ssi/header.php');
 include_once('../ssi/db.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 
 <body style="overflow:visible;">
@@ -112,6 +115,10 @@ include_once('../ssi/db.php');
 </body>
 </html>
 <?php
+} else {
+	// 404 no operation
+	header('Location:../404.php');	
+}
 } else {
 	// 404 no operation
 	header('Location:../404.php');	

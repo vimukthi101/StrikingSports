@@ -3,7 +3,7 @@ if(!isset($_SESSION[''])){
 	session_start();
 }
 //errors will not be shown
-//error_reporting(0);
+error_reporting(0);
 include_once('../../ssi/db.php');
 if(isset($_GET['status']) && isset($_GET['pStatus']) && isset($_GET['id'])){
 	$status = trim(htmlspecialchars(mysql_real_escape_string(($_GET['status']))));

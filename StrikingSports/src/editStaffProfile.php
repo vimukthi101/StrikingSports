@@ -2,6 +2,7 @@
 if(!isset($_SESSION[''])){
 	session_start();
 }
+if(isset($_SESSION['position']) && ($_SESSION['position']==0 || $_SESSION['position']==1 || $_SESSION['position']==2)){
 if(isset($_SESSION['email'])){
 ?>
 <!DOCTYPE html>
@@ -9,6 +10,8 @@ if(isset($_SESSION['email'])){
 <?php
 include_once('../ssi/header.php');
 include_once('../ssi/db.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 
 <body style="overflow: visible;">
@@ -136,7 +139,7 @@ include_once('../ssi/db.php');
                 <div class="form-group">
                     <label for="employeelNIC" class="control-label col-md-3">Position</label>
                     <div class="col-md-8">
-                    	<input class="form-control" type="text" name="nic" readonly id="nic" readonly value="<?php echo $position; ?>" />
+                    	<input class="form-control" type="text" name="nic" readonly id="nic" value="<?php echo $position; ?>" />
                 	</div>
                 </div>
                 <div class="form-group">
@@ -241,6 +244,9 @@ include_once('../ssi/db.php');
 </body>
 </html>
 <?php
+} else {
+	header('Location:../404.php');
+}
 } else {
 	header('Location:../404.php');
 }

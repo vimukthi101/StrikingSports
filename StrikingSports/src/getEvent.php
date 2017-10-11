@@ -2,7 +2,10 @@
 if(!isset($_SESSION[''])){
 	session_start();
 }
+if(isset($_SESSION['position']) && ($_SESSION['position']==0 || $_SESSION['position']==1 || $_SESSION['position']==2)){
 include_once('../ssi/db.php');
+//errors will not be shown
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,5 +59,8 @@ echo '</table>';
 } else {
 //if no result to show
 echo '<h3 class="text-center" style="padding:50px;">No Events To Display.</h3>';
+}
+} else {
+	header('Location:../404.php');	
 }
 ?>

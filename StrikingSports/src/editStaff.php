@@ -2,12 +2,15 @@
 if(!isset($_SESSION[''])){
 	session_start();
 }
+if(isset($_SESSION['position']) && $_SESSION['position']==0){
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 include_once('../ssi/header.php');
 include_once('../ssi/db.php');
+//errors will not be shown
+error_reporting(0);
 if(isset($_GET['id']) && !empty($_GET['id'])){
 ?>
 
@@ -194,6 +197,9 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 </body>
 </html>
 <?php
+} else {
+	header('Location:../404.php');	
+}
 } else {
 	header('Location:../404.php');	
 }
