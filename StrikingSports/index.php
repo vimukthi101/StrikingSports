@@ -71,33 +71,46 @@
             <div class="i-head-right i-head-com col-md-6 col-sm-12 col-xs-12">
                 <ul>
                 	<?php
-					if(isset($_SESSION['email'])){
+						if(isset($_SESSION['position']) && isset($_SESSION['email'])){
 					?>
-                   		<li class="top-scal">
-                            <a href="src/Profile.php">
-                                <i class="fa fa-ticket" aria-hidden="true"></i> Welcome <?php echo $_SESSION['first_name'];?>
-                            </a>
-                        </li>
-                        <li class="top-scal-1">
-                            <a href="src/controller/logout.php">
-                                <i class="fa fa-registered" aria-hidden="true"></i> Log Out
-                            </a>
-                        </li>
-                    <?php
-					} else {
-					?>	
-                    	<li class="top-scal">
-                            <a href="src/register.php">
-                                <i class="fa fa-ticket" aria-hidden="true"></i> Register
-                            </a>
-                        </li>
-                        <li class="top-scal-1">
-                            <a href="src/login.php">
-                                <i class="fa fa-registered" aria-hidden="true"></i> Log In
-                            </a>
-                        </li>
-                    <?php
-					}
+							<li class="top-scal">
+								<a href="./src/staffProfile.php">
+									<i class="fa fa-ticket" aria-hidden="true"></i> Welcome <?php echo $_SESSION['first_name'];?>
+								</a>
+							</li>
+							<li class="top-scal-1">
+								<a href="./src/controller/logout.php">
+									<i class="fa fa-registered" aria-hidden="true"></i> Log Out
+								</a>
+							</li>
+					<?php
+						} else if(!isset($_SESSION['position']) && isset($_SESSION['email'])){
+						?>
+							<li class="top-scal">
+								<a href="./src/Profile.php">
+									<i class="fa fa-ticket" aria-hidden="true"></i> Welcome <?php echo $_SESSION['first_name'];?>
+								</a>
+							</li>
+							<li class="top-scal-1">
+								<a href="./src/controller/logout.php">
+									<i class="fa fa-registered" aria-hidden="true"></i> Log Out
+								</a>
+							</li>
+						<?php
+						} else {
+						?>	
+							<li class="top-scal">
+								<a href="./src/register.php">
+									<i class="fa fa-ticket" aria-hidden="true"></i> Register
+								</a>
+							</li>
+							<li class="top-scal-1">
+								<a href="./src/login.php">
+									<i class="fa fa-registered" aria-hidden="true"></i> Log In
+								</a>
+							</li>
+						<?php
+						}
 					?>
                 </ul> 
             </div>
@@ -111,16 +124,14 @@
                 <p>You can't put a limit on anything. The more you dream, the farther you get - Michael Phelps</p>
                 <?php
 				$today = date("Y-m-d");
-				$getEvents = "SELECT * FROM EVENTS WHERE event_date >= '".$today."' ORDER BY event_date LIMIT 5";
+				$getEvents = "SELECT * FROM EVENTS WHERE event_date >= '".$today."' and STATUS='2' ORDER BY event_date LIMIT 3";
 				$resultEvents = mysqli_query($con, $getEvents);
 				if(mysqli_num_rows($resultEvents)){
 					$counter = 1;
 					while($rowEvents = mysqli_fetch_array($resultEvents)){
 						$eventTitle = $rowEvents['event_name'];
 						$eventId = $rowEvents['event_id'];	
-						echo '<ul>
-								<li><a href="src/viewEvent.php?id='.$eventId.'"><span>'.$counter.'</span>'.$eventTitle.'</a></li>
-							</ul>';
+						echo '<p><a href="src/viewEvent.php?id='.$eventId.'"><span>'.$counter.'&nbsp;&nbsp;</span>'.$eventTitle.'</a></p>';
 						$counter++;
 					}
 					echo '<a href="src/events.php" class="aebtn">View All Events</a>';
@@ -156,7 +167,7 @@
                     <form>
                         <ul>
                             <li>
-                                <input type="text" placeholder="Search cricket News and Events Now!">
+                                <input type="text" placeholder="Search Sports News and Events Now!">
                             </li>
                             <li>
                                 <input type="submit" value="SEARCH">
@@ -183,7 +194,7 @@
                     <ul>
                     	<?php
 						$today2 = date("Y-m-d");
-						$getEvents2 = "SELECT * FROM EVENTS WHERE event_date >= '".$today2."' ORDER BY event_date LIMIT 5";
+						$getEvents2 = "SELECT * FROM EVENTS WHERE event_date >= '".$today2."' and STATUS='2' ORDER BY event_date LIMIT 4";
 						$resultEvents2 = mysqli_query($con, $getEvents2);
 						if(mysqli_num_rows($resultEvents2)){
 							while($rowEvents2 = mysqli_fetch_array($resultEvents2)){
@@ -274,7 +285,7 @@
                 </div>
                 <div class="hom-top-trends row">
                 <?php
-				$getPost = "SELECT * FROM blog_post ORDER BY created_date_time limit 8";
+				$getPost = "SELECT * FROM blog_post WHERE STATUS='2' ORDER BY created_date_time limit 8";
 				$rGetPost = mysqli_query($con, $getPost);
 				if(mysqli_num_rows($rGetPost)!=0){
 					while($rowGetPost = mysqli_fetch_array($rGetPost)){
@@ -293,8 +304,8 @@
 										<span><i class="fa fa-futbol-o" aria-hidden="true"></i>'.date("d F Y", strtotime($postDate)).'</span>
 										<a href="src/view.php?id='.$postId.'">
 											<h4>'.$postTitle.'</h4>
+											<p style="max-width: 500px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'.$postDescription.'</p>
 										</a>
-										<p>'.$postDescription.'</p>
 									</div>
 								</div>
 							</div>
@@ -632,7 +643,7 @@
         </div>
     </section-->
     <?php
-	$getPost = "SELECT * FROM blog_post WHERE created_date_time IN (SELECT MAX(created_date_time) FROM blog_post)";
+	$getPost = "SELECT * FROM blog_post WHERE STATUS='2' ORDER BY created_date_time DESC LIMIT 1";
 	$rGetPost = mysqli_query($con, $getPost);
 	if(mysqli_num_rows($rGetPost)!=0){
 		while($rowGetPost = mysqli_fetch_array($rGetPost)){
@@ -683,11 +694,21 @@
 			$members = $rowGetMem['members'];
 		}
 	}
-	$getPosts = "SELECT count(*) as posts FROM blog_post";
+	$getPosts = "SELECT count(*) as posts FROM blog_post WHERE STATUS='2'";
 	$rGetPosts = mysqli_query($con, $getPosts);
 	if(mysqli_num_rows($rGetPosts)!=0){
 		while($rowGetPosts = mysqli_fetch_array($rGetPosts)){
 			$Posts = $rowGetPosts['posts'];
+		}
+	}
+	$getEventCount = "SELECT COUNT(*) as events FROM events WHERE STATUS='2'";
+	$rGetEventCount = mysqli_query($con, $getEventCount);
+	if(mysqli_num_rows($rGetEventCount)!=0){
+		while($rowGetEventCount = mysqli_fetch_array($rGetEventCount)){
+			$eventCount = $rowGetEventCount['events'];
+			if(is_null($eventCount)){
+				$eventCount = 0;
+			}
 		}
 	}
 	?>
@@ -700,7 +721,7 @@
 						</a>
 						<ul>
 							<li><span><?php echo $members; ?></span> Community Members</li>
-							<li><span>512</span> Sports Events</li>
+							<li><span><?php echo $eventCount; ?></span> Sports Events</li>
 							<li><span><?php echo $Posts; ?></span> Blog Posts</li>
 						</ul>
 					</div>
@@ -758,7 +779,7 @@
                         <p>Check the recent sports events</p>
                         <ul>
                         <?php
-						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 3";
+						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 2";
 						   $sResult = mysqli_query($con, $sEvents);
 						   if(mysqli_num_rows($sResult)){
 							   while($sRow = mysqli_fetch_array($sResult)){

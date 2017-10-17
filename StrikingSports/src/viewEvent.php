@@ -54,7 +54,7 @@ error_reporting(0);
 				<h4><span> Added By : </span>'.$staff.'</h4>
             </div>
 			<div class="p-mf"><img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:300px;"></img></div>
-			<div class="p-mf"><h4>'.$description.'</h4></div>
+			<div class="p-mf">'.$description.'</div>
 			<div class="p-mf"><h4>Category : <span>'.$category.'</span></h4></div>
         	</div>';
 		} else {

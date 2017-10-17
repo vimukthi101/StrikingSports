@@ -45,19 +45,19 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 								}
 							}
 							while($rowPending = mysqli_fetch_array($rPending)){
-								$cPending = $rowDraft['pending'];
+								$cPending = $rowPending['pending'];
 								if(empty($cPending)){
 									$cPending = 0;
 								}
 							}
 							while($rowPublished = mysqli_fetch_array($rPublished)){
-								$cPublished = $rowDraft['published'];
+								$cPublished = $rowPublished['published'];
 								if(empty($cPublished)){
 									$cPublished = 0;
 								}
 							}
 							while($rowRejected = mysqli_fetch_array($rRejected)){
-								$cRejected = $rowDraft['rejected'];
+								$cRejected = $rowRejected['rejected'];
 								if(empty($cRejected)){
 									$cRejected = 0;
 								}
@@ -77,6 +77,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 			$getPost = "SELECT * FROM blog_post WHERE staff_email='".$email."' ORDER BY created_date_time";
 			$rGetPost = mysqli_query($con, $getPost);
 			if(mysqli_num_rows($rGetPost)!=0){
+				echo '<div class="row">';
 				while($rowGetPost = mysqli_fetch_array($rGetPost)){
 					$date = $rowGetPost['created_date_time'];
 					$id = $rowGetPost['post_id'];
@@ -106,10 +107,10 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 						}
 					}
 					echo '<div class="p-join-club">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="hom-trend">
 								<div class="hom-trend-img">
-									<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:300px;"></img>
+									<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:200px;"></img>
 								</div>
 								<div class="hom-trend-con">
 									<span><i class="fa fa-calendar" aria-hidden="true"></i> '.$date.'</span>
@@ -117,20 +118,22 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 									<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> '.$unLikes.'</span>
 									<span><i class="fa fa-comment-o" aria-hidden="true"></i> '.$comments.'</span>
 									<span><i class="fa fa-eye" aria-hidden="true"></i> '.$views.'</span>
-									<a href="viewPost.php?id=">
+									<a href="post.php?id='.$id.'">
 										<h4>'.$title.'</h4>
+										<p style="max-width: 500px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'.$description.'</p>
 									</a>
-									<p>'.$description.'</p>
 								</div>
 								<div class="hom-trend-con">
-									<a href="deletePost.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</span></a>
+									<a href="deletePost.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Del.</span></a>
 									<a href="post.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-eye" aria-hidden="true"></i>View</span></a>
 									<a href="editPost.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</span></a>
 								</div>
+								<div style="padding-top:30px;"></div>
 							</div>
 						</div>
 					</div>';
 				}
+				echo '</div>';
 			} else {
 				echo '<h2 class="text-center">No Blog Posts To Show</h2>';	
 			}
@@ -281,6 +284,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 			$getPostAdmin = "SELECT * FROM blog_post ORDER BY created_date_time";
 			$rGetPostAdmin = mysqli_query($con, $getPostAdmin);
 			if(mysqli_num_rows($rGetPostAdmin)!=0){
+				echo '<div class="row">';
 				while($rowGetPostAdmin = mysqli_fetch_array($rGetPostAdmin)){
 					$dateAdmin = $rowGetPostAdmin['created_date_time'];
 					$idAdmin = $rowGetPostAdmin['post_id'];
@@ -310,10 +314,10 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 						}
 					}
 					echo '<div class="p-join-club">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="hom-trend">
 								<div class="hom-trend-img">
-									<img src="data:image/jpeg;base64,'.base64_encode($imageAdmin).'" class="img img-responsive" style="width:100%;height:300px;"></img>
+									<img src="data:image/jpeg;base64,'.base64_encode($imageAdmin).'" class="img img-responsive" style="width:100%;height:200px;"></img>
 								</div>
 								<div class="hom-trend-con">
 									<span><i class="fa fa-calendar" aria-hidden="true"></i> '.$dateAdmin.'</span>
@@ -321,13 +325,13 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 									<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> '.$unLikesAdmin.'</span>
 									<span><i class="fa fa-comment-o" aria-hidden="true"></i> '.$commentsAdmin.'</span>
 									<span><i class="fa fa-eye" aria-hidden="true"></i> '.$viewsAdmin.'</span>
-									<a href="viewPost.php?id=">
+									<a href="post.php?id='.$idAdmin.'">
 										<h4>'.$titleAdmin.'</h4>
+										<p style="max-width: 500px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'.$descriptionAdmin.'</p>
 									</a>
-									<p>'.$descriptionAdmin.'</p>
 								</div>
 								<div class="hom-trend-con">
-									<a href="deletePost.php?id='.$idAdmin.'"><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</span></a>
+									<a href="deletePost.php?id='.$idAdmin.'"><span class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>Del.</span></a>
 									<a href="post.php?id='.$idAdmin.'"><span class="col-sm-4"><i class="fa fa-eye" aria-hidden="true"></i>View</span></a>
 									<a href="editPost.php?id='.$idAdmin.'"><span class="col-sm-4"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</span></a>
 								</div>
@@ -335,6 +339,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 						</div>
 					</div>';
 				}
+				echo '</div>';
 			} else {
 				echo '<h2 class="text-center">No Blog Posts To Show</h2>';	
 			}
@@ -440,6 +445,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 			$getPost = "SELECT * FROM blog_post WHERE STATUS='2' AND approved_by='".$email2."' ORDER BY created_date_time";
 			$rGetPost = mysqli_query($con, $getPost);
 			if(mysqli_num_rows($rGetPost)!=0){
+				echo '<div class="row">';
 				while($rowGetPost = mysqli_fetch_array($rGetPost)){
 					$date = $rowGetPost['created_date_time'];
 					$id = $rowGetPost['post_id'];
@@ -469,10 +475,10 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 						}
 					}
 					echo '<div class="p-join-club">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="hom-trend">
 								<div class="hom-trend-img">
-									<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:300px;"></img>
+									<img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100%;height:200px;"></img>
 								</div>
 								<div class="hom-trend-con">
 									<span><i class="fa fa-calendar" aria-hidden="true"></i> '.$date.'</span>
@@ -480,10 +486,10 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 									<span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> '.$unLikes.'</span>
 									<span><i class="fa fa-comment-o" aria-hidden="true"></i> '.$comments.'</span>
 									<span><i class="fa fa-eye" aria-hidden="true"></i> '.$views.'</span>
-									<a href="viewPost.php?id=">
-										<h4>'.$title.'</h4>
+									<a href="post.php?id='.$id.'">
+										<h4>'.$title.'</h4>											
+										<p style="max-width: 500px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'.$description.'</p>
 									</a>
-									<p>'.$description.'</p>
 								</div>
 								<div class="hom-trend-con">
 									<a href="post.php?id='.$id.'"><span class="col-sm-4"><i class="fa fa-eye" aria-hidden="true"></i>View</span></a>
@@ -492,6 +498,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 						</div>
 					</div>';
 				}
+				echo '</div>';
 			} else {
 				echo '<h2 class="text-center" style="padding:20px;">No Blog Posts To Show</h2>';	
 			}

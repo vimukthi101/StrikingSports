@@ -31,27 +31,29 @@ $resultGetPost = mysqli_query($con, $getPost);
 if(mysqli_num_rows($resultGetPost) != 0){
 echo '<table class="table table-responsive table-striped">
 		<tr>
-			<td>Event Date Time</td>
 			<td>Title</td>
 			<td>Status</td>
 			<td>Place</td>
-			<td>Category</td>
 			<td>Actions</td>
 		</tr>';
 while($rowPosts = mysqli_fetch_array($resultGetPost)){
 	$id = $rowPosts['event_id'];
-	$dateTime = $rowPosts['event_date'];
 	$title = $rowPosts['event_name'];
-	$description = $rowPosts['information'];
 	$status = $rowPosts['status'];
 	$tag = $rowPosts['place'];
-	$category = $rowPosts['event_category'];
+	if($status == "0"){
+		$status = "Draft";
+	} else if($status == "1"){
+		$status = "Pending Approval";
+	} else if($status == "2"){
+		$status = "Published";
+	} else if($status == "3"){
+		$status = "Rejected";
+	}
 	echo '<tr>
-		<td>'.$dateTime.'</td>
 		<td>'.$title.'</td>
 		<td>'.$status.'</td>
 		<td>'.$tag.'</td>
-		<td>'.$category.'</td>
 		<td><a href="eventDynamic.php?id='.$id.'"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="editEvent.php?id='.$id.'"><i class="fa fa-edit" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteEvent.php?id='.$id.'"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 	  </tr>';
 }

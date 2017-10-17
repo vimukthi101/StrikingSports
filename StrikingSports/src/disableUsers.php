@@ -146,7 +146,7 @@ error_reporting(0);
                 </div>
                 <div class="form-group">
                      <div class="form-group col-md-11 text-center">
-                        <input type="submit" value="Delete Profile" id="submit" name="submit" class="btn btn-danger" onclick="return confirm('Do You Wish to De-Activate Account?');return false;"/>
+                        <input type="submit" value="Delete Profile" id="submit" name="submit" class="btn btn-danger" onclick="return confirm('Do You Wish to Delete Your Account?');return false;"/>
                     </div>
                 </div>
             </form>

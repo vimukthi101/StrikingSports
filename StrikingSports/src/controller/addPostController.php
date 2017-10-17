@@ -16,8 +16,8 @@ if(isset($_SESSION['position']) && $_SESSION['position']==1){
 			$category = trim(mysqli_real_escape_string($con,$_POST['category']));
 			$imageMimeTypes = array('png','gif','jpeg','jpg');
 			$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-			if(preg_match('/[A-Za-z\s]+/',$title)){
-				if(preg_match('/[A-Za-z\s]+/',$description)){
+			if(preg_match('/.+/',$title)){
+				if(preg_match('/.+/',$description)){
 					if(preg_match('/[a-zA-Z,]+/',$tags)){
 						if (in_array($file_ext, $imageMimeTypes)) {
 							$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));

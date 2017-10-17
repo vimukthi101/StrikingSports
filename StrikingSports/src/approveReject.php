@@ -52,8 +52,8 @@ error_reporting(0);
                                 $createdBy = $rowGetPost['staff_email'];
                                 echo '<tr>
                                         <td><img src="data:image/jpeg;base64,'.base64_encode($image).'" class="img img-responsive" style="width:100px;height:100px;"></img></td>
-                                        <td>'.$title.'</td>
-                                        <td>'.$description.'</td>
+                                        <td style="max-width:400px;">'.$title.'</td>
+                                        <td style="max-width:600px;">'.$description.'</td>
                                         <td><a href="post.php?id='.$id.'" class="link-btn">View Post</a></td>
                                         <td>'.$createdBy.'</td>
                                         <td>'.$date.'</td>

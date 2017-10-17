@@ -28,7 +28,7 @@ if(!isset($_SESSION[''])){
                 <p>Actually nobody can be perfect in cricket. Everybody makes mistakes. It is important to learn from your mistakes and correct them - <span>Kumar Sangakkara</span></p>
             </div>
                 <?php
-				$getPost = "SELECT * FROM blog_post WHERE category_id IN (select category_id from category where category='cricket') ORDER BY created_date_time";
+				$getPost = "SELECT * FROM blog_post WHERE category_id IN (select category_id from category where category='cricket') AND STATUS='2' ORDER BY created_date_time";
 				$rGetPost = mysqli_query($con, $getPost);
 				if(mysqli_num_rows($rGetPost)!=0){
 					while($rowGetPost = mysqli_fetch_array($rGetPost)){
@@ -73,8 +73,8 @@ if(!isset($_SESSION[''])){
 										<span><i class="fa fa-eye" aria-hidden="true"></i> '.$views.'</span>
 										<a href="view.php?id='.$id.'">
 											<h4>'.$title.'</h4>
+											<p style="max-width: 500px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'.$description.'</p>
 										</a>
-										<p>'.$description.'</p>
 									</div>
 								</div>
 							</div>

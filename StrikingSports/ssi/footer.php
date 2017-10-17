@@ -7,11 +7,21 @@ if(mysqli_num_rows($rGetMem)!=0){
 		$members = $rowGetMem['members'];
 	}
 }
-$getPosts = "SELECT count(*) as posts FROM blog_post";
+$getPosts = "SELECT count(*) as posts FROM blog_post WHERE STATUS='2'";
 $rGetPosts = mysqli_query($con, $getPosts);
 if(mysqli_num_rows($rGetPosts)!=0){
 	while($rowGetPosts = mysqli_fetch_array($rGetPosts)){
 		$Posts = $rowGetPosts['posts'];
+	}
+}
+$getEventCount = "SELECT COUNT(event_id) as events FROM events WHERE STATUS='2'";
+$rGetEventCount = mysqli_query($con, $getEventCount);
+if(mysqli_num_rows($rGetEventCount)!=0){
+	while($rowGetEventCount = mysqli_fetch_array($rGetEventCount)){
+		$eventCount = $rowGetEventCount['events'];
+		if(is_null($eventCount)){
+			$eventCount = 0;
+		}
 	}
 }
 ?>
@@ -24,7 +34,7 @@ if(mysqli_num_rows($rGetPosts)!=0){
                     </a>
                     <ul>
                         <li><span><?php echo $members; ?></span> Community Members</li>
-                        <li><span>512</span> Sports Events</li>
+                        <li><span><?php echo $eventCount; ?></span> Sports Events</li>
                         <li><span><?php echo $Posts; ?></span> Blog Posts</li>
                     </ul>
                 </div>
@@ -82,7 +92,7 @@ if(mysqli_num_rows($rGetPosts)!=0){
                         <p>Check the recent sports events</p>
                         <ul>
                         <?php
-						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 3";
+						   $sEvents = "SELECT * FROM EVENTS WHERE STATUS='2' LIMIT 2";
 						   $sResult = mysqli_query($con, $sEvents);
 						   if(mysqli_num_rows($sResult)){
 							   while($sRow = mysqli_fetch_array($sResult)){

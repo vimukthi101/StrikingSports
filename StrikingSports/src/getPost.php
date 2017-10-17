@@ -32,31 +32,43 @@ if($p != ""){
 }
 $resultGetPost = mysqli_query($con, $getPost);
 if(mysqli_num_rows($resultGetPost) != 0){
-echo '<table class="table table-striped">
+echo '<table class="table table-striped table-bordered">
 		<tr>
-			<td>Created Date Time</td>
 			<td>Title</td>
 			<td>Description</td>
 			<td>Status</td>
 			<td>Tags</td>
-			<td>Category</td>
 			<td>Actions</td>
 		</tr>';
 while($rowPosts = mysqli_fetch_array($resultGetPost)){
 	$id = $rowPosts['post_id'];
-	$dateTime = $rowPosts['created_date_time'];
 	$title = $rowPosts['title'];
 	$description = $rowPosts['description'];
 	$status = $rowPosts['status'];
+	if($status == "0"){
+		$status = "Draft";
+	} else if($status == "1"){
+		$status = "Pending Approval";
+	} else if($status == "2"){
+		$status = "Published";
+	} else if($status == "3"){
+		$status = "Rejected";
+	}
 	$tag = $rowPosts['tag'];
-	$category = $rowPosts['category_id'];
+	$array = explode(",",$tag);
+	$count = sizeof($array);
+	for($i=0;$i < $count;$i++){
+		$array[$i];
+	}
 	echo '<tr>
-		<td>'.$dateTime.'</td>
 		<td>'.$title.'</td>
 		<td>'.$description.'</td>
 		<td>'.$status.'</td>
-		<td>'.$tag.'</td>
-		<td>'.$category.'</td>
+		<td>';
+		for($i=0;$i <= $count;$i++){
+			echo $array[$i]."\n";
+		}
+		echo '</td>
 		<td><a href="post.php?id='.$id.'"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="editPost.php?id='.$id.'"><i class="fa fa-edit" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="deletePost.php?id='.$id.'"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 	  </tr>';
 }

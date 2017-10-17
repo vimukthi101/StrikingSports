@@ -26,6 +26,8 @@ error_reporting(0);
     <?php
 		$email = $_SESSION['email'];
 		$id = trim(htmlspecialchars(mysqli_real_escape_string($con,$_GET["id"])));
+		$updateViews = "UPDATE blog_post SET views=views+1 WHERE post_id='".$id."'";
+		if(mysqli_query($con, $updateViews));
 		$getPost = "SELECT * FROM blog_post WHERE post_id='".$id."'";
 		$resultPost = mysqli_query($con, $getPost);
 		if(mysqli_num_rows($resultPost)!=0){
@@ -88,12 +90,16 @@ error_reporting(0);
             <div class="inn-title">
                 <h2><i class="fa fa-check" aria-hidden="true"></i> '.$title.'</h2>
 				<h3><a><i class="fa fa-eye" aria-hidden="true"></i><span> '.$views.' </span></a>';
-				if($postLikeStatus == 0){
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=0"><i class="fa fa-thumbs-up" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
-				} else if($postLikeStatus == 1) {
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=1"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=1"><i class="fa fa-thumbs-down" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
-				} else if($postLikeStatus == 2) {
-					echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=2"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=2"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+				if(isset($_SESSION['email'])){
+					if($postLikeStatus == 0){
+						echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=0"><i class="fa fa-thumbs-up" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					} else if($postLikeStatus == 1) {
+						echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=1"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=1"><i class="fa fa-thumbs-down" style="color:rgb(255,0,0);" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					} else if($postLikeStatus == 2) {
+						echo '<a href="controller/postLikesController.php?id='.$id.'&status=0&pStatus=2"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a href="controller/postLikesController.php?id='.$id.'&status=1&pStatus=2"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
+					}	
+				} else {
+					echo '<a><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$likes.' </span></a><a><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$unLikes.'</span></a>';
 				}
 				echo '</h3>
             </div>
@@ -140,12 +146,16 @@ error_reporting(0);
 									<p>'.$commentDate.' by '.$commentUser.'</p>
 									<textarea disabled>'.$comment.'</textarea>
 									<p>';
-						if($commentLikeStatus == 0){
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';	
-						} else if($commentLikeStatus == 1) {
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentUnLike.'</span></a>';
-						} else if($commentLikeStatus == 2) {
-							echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';
+						if(isset($_SESSION['email'])){
+							if($commentLikeStatus == 0){
+								echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=0&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';	
+							} else if($commentLikeStatus == 1) {
+								echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=1&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true" style="color:rgb(255,0,0);"></i><span> '.$commentUnLike.'</span></a>';
+							} else if($commentLikeStatus == 2) {
+								echo '<a href="controller/commentLikesController.php?id='.$commentId.'&status=0&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a href="controller/commentLikesController.php?id='.$commentId.'&status=1&pStatus=2&post='.$id.'"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';
+							}
+						} else {
+							echo '<a><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$commentLike.' </span></a><a><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$commentUnLike.'</span></a>';
 						}
 									echo '</p>
 									<p id="new"></p>

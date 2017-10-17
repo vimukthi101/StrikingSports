@@ -42,11 +42,11 @@ error_reporting(0);
                                 </div>';
                         } else if($error == 'we'){
                             echo '<div style="padding:3px;">
-                                    <label class="form-control" style="height:35px;">Title Can Contain Only Letters.</label>
+                                    <label class="form-control" style="height:35px;">Title Cannot Contain New Lines.</label>
                                 </div>';
                         } else if($error == 'wf'){
                             echo '<div style="padding:3px;">
-                                    <label class="form-control">Description Can Contain Only Letters.</label>
+                                    <label class="form-control">Description Cannot Contain New Lines.</label>
                                 </div>';
                         } else if($error == 'wm'){
                             echo '<div style="padding:3px;">
@@ -75,7 +75,7 @@ error_reporting(0);
                 <form method="post" action="controller/addPostController.php" role="form" class="form-horizontal" enctype="multipart/form-data">
                		<div class="form-group col-md-11">
                     	<h2>Enter The Title </h2>
-                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern="[A-Za-z\s]+" class="form-control" title="Should be letters only" />
+                    	<input placeholder="Enter A Title For Your Blog Post" required type="text" id="title" name="title" pattern=".+" class="form-control" title="No new lines accepted" />
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Add A Cover Image </h2>
@@ -83,7 +83,7 @@ error_reporting(0);
                     </div>
                     <div class="form-group col-md-11">
                     	<h2>Enter A Description </h2>
-                    	<input placeholder="Enter A Description For Your Blog Post" maxlength="400" required type="text" id="description" name="description" pattern="[A-Za-z\s]+" class="form-control" title="Should be letters only"/>
+                    	<input placeholder="Enter A Description For Your Blog Post" maxlength="400" required type="text" id="description" name="description" pattern=".+" class="form-control" title="No new lines accepted"/>
                     </div>
                 	<div class="form-group col-md-11">
                     	<h2>Enter The Content </h2>

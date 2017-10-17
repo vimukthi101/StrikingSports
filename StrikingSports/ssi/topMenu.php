@@ -11,7 +11,20 @@
         <div class="i-head-right i-head-com col-md-6 col-sm-12 col-xs-12">
             <ul>
                 <?php
-					if(isset($_SESSION['email'])){
+					if(isset($_SESSION['position']) && isset($_SESSION['email'])){
+				?>
+                        <li class="top-scal">
+                            <a href="../src/staffProfile.php">
+                                <i class="fa fa-ticket" aria-hidden="true"></i> Welcome <?php echo $_SESSION['first_name'];?>
+                            </a>
+                        </li>
+                        <li class="top-scal-1">
+                            <a href="../src/controller/logout.php">
+                                <i class="fa fa-registered" aria-hidden="true"></i> Log Out
+                            </a>
+                        </li>
+                <?php
+					} else if(!isset($_SESSION['position']) && isset($_SESSION['email'])){
 					?>
                    		<li class="top-scal">
                             <a href="../src/Profile.php">
