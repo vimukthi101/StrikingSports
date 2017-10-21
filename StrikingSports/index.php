@@ -145,13 +145,18 @@
             <div class="h_r">
                 <div class="slideshow-container">
                     <div class="mySlides fade" style="display: block;">
-                        <div class="numbertext">1 / 2</div>
-                        <img src="./images/cricket1.jpg" alt="">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="./images/W1.jpg" alt="">
                         <div class="text">Striking Sports</div>
                     </div>
                     <div class="mySlides fade" style="display: none;">
-                        <div class="numbertext">2 / 2</div>
-                        <img src="./images/b6.jpg" alt="">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="./images/W2.jpg" alt="">
+                        <div class="text">Striking Sports</div>
+                    </div>
+                    <div class="mySlides fade" style="display: none;">
+                        <div class="numbertext">3 / 3</div>
+                        <img src="./images/W3.jpg" alt="">
                         <div class="text">Striking Sports</div>
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">❮</a>

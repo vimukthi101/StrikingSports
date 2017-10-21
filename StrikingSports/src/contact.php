@@ -20,21 +20,26 @@ error_reporting(0);
 		include_once('../ssi/topMenu.php');
 		include_once('../ssi/searchBar.php');
 	?>
-    <section>
-        <div class="lp spe-bot-red-3">
-            <div>
-                <div class="inn-title">
+    <section> 
+        <div class="row">
+            <div class="col-md-6">
+            	<div style="padding:30px;margin-left:80px;">
+	                <img src="../images/contact_us.jpg" style="width:100%;"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="inn-title" style="padding:30px;">
                     <h2>AD : Striking Sports  <span> Club</span></h2>
                     <p>No : 18/1, Nagaha Road. Rukmale, Pannipitiya, Sri Lanka</p>
 					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +94 7795 86170</span>
 					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: sports@striking.lk</span>
                 </div>
-                <div class="inn-title">
+                <div class="inn-title" style="padding:30px;">
                     <h2>SITE : Striking Sports  <span> Club</span></h2>
                     <p>No : 231, Ihala Imbulgoda, Imbulgoda, Gampaha, Sri Lanka</p>
 					<span class="con-ph"><i class="fa fa-phone"></i> Phone: +94 7129 22461</span>
 					<span class="con-ph"><i class="fa fa-envelope-o"></i> Email: sports@striking.lk</span>
-                    <div class="share-btn">
+                    <div class="share-btn" style="padding-top:30px;">
                         <ul>
                             <li><a href="https://www.facebook.com/sports.striking/" target="_blank"><i class="fa fa-facebook fb1"></i> Follow On Facebook</a>
                             </li>
@@ -46,7 +51,7 @@ error_reporting(0);
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </section>
     <?php
 		include_once('../ssi/latestPost.php');

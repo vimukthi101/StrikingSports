@@ -20,18 +20,20 @@ error_reporting(0);
 		include_once('../ssi/topMenu.php');
 		include_once('../ssi/searchBar.php');
 	?>
-    <section>
-        <div class="lp spe-bot-red-3">
-            <div class="tr-pro">
-                <div class="inn-title">
+    <section> 
+        <div class="row">
+            <div class="col-md-6">
+            	<div style="padding:30px;margin-left:80px;">
+	                <img src="../images/about_us.jpg" style="width:100%;"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="inn-title" style="padding:30px;">
                     <h2><i class="fa fa-check" aria-hidden="true"></i> striking sports <span> about us</span></h2>
                     <p>Striking Sports is a website dedicated to sports in Sri Lanka. We provide excellent reports on the matters with regard to the sports in Sri Lanka in an attempt to help Sri Lanka become a much better country in sports. In addition to the local news, we bring the best out of the sports world.</p>
                 </div>
-                <div class="inn-all-com">
-                    
-                </div>
             </div>
-        </div>
+        </div> 
     </section>
     <?php
 		include_once('../ssi/latestPost.php');
