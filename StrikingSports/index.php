@@ -169,13 +169,13 @@
         <div class="hom-search lp">
             <div class="row">
                 <div class="hom-search-inn">
-                    <form>
+                    <form action="src/search.php" role="form" method="post">
                         <ul>
                             <li>
-                                <input type="text" placeholder="Search Sports News and Events Now!">
+                                <input required type="search" id="search" name="search" pattern=".+" title="No new lines accepted"  placeholder="Search Sports News Now!">
                             </li>
                             <li>
-                                <input type="submit" value="SEARCH">
+                                <input type="submit" name="submit" id="submit" value="SEARCH">
                             </li>
                         </ul>
                     </form>

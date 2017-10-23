@@ -5,7 +5,6 @@ TO DO
 #####
 
 1) reply comment add
-2) serach bar
 
 staff position
 ##############

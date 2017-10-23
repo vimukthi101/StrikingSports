@@ -8,13 +8,13 @@
                     </a>
                 </div>
                 <div class="col-md-3 top-search">
-                    <form>
+                    <form action="search.php" role="form" method="post">
                         <ul>
                             <li>
-                                <input type="text" placeholder="Search Here..">
+                                <input required type="search" id="search" name="search" pattern=".+" title="No new lines accepted"  placeholder="Search Here..">
                             </li>
                             <li>
-                                <input type="submit" value="search">
+                                <input type="submit" name="submit" id="submit" value="search">
                             </li>
                         </ul>
                     </form>
